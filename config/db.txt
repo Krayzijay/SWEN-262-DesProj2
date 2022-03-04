@@ -1,0 +1,6 @@
+//yml file: will edit later
+host: postgres
+database: MMLS
+user: Admin
+password: Password123
+port: 5432
