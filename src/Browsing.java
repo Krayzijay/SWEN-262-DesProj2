@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Locale;
+import ;
 
 public class Browsing{
 
@@ -13,7 +13,7 @@ public class Browsing{
         while(true){
             //prints all artists
             System.out.println("List of Artists:");
-            printArtists();
+            printArtists(db.getArtists());
 
             //user chooses an artist
             System.out.println("Please enter a Artist's name or \'Back\' to go back.:");
@@ -22,17 +22,25 @@ public class Browsing{
                 input = buffer.readLine();
             } catch (IOException e){}
 
+            //checks if artist is in library
+            int contains = 0;
+            for (Artist a : db.getArtists() ){
+                if(a.getName().toLowerCase().equals(input.toLowerCase())){
+                    contains = 1;
+                    break;
+                }
+            }
+
             //if artist wants to leave, end loop
             if (input.toLowerCase().equals("back")){
                 break;
             }
 
             //if artist selects an artist
-            else if (input is in artist list){
+            else if (contains == 1){
                 while(true){
                     //print single songs and releases
                     printArtistInfo(Artist a);
-
 
                     System.out.println("Please enter a Release Title or \'Back\' to go back.:");
                     try{
@@ -49,6 +57,8 @@ public class Browsing{
                 }
 
             }
+
+
         }
 
         /**
@@ -67,20 +77,19 @@ public class Browsing{
          */
 
 
-
     }
-    public void printArtists(List of artists){
-        for (Artist a : list fo artists ){
+    public static void printArtists(List list ){
+        for (Artist a : list ){
             System.out.println(a);
         }
     }
 
-    public void printRelease(String name){
+    public static void printRelease(String name){
         Release r = release list .get(name);
         System.out.println(r);
     }
 
-    public void printArtistInfo(String name){
+    public static void printArtistInfo(String name){
         //finds the artist instance
         Artist a = artist list .get(name);
 
