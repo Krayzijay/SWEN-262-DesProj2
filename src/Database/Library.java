@@ -4,7 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    List<Song> SongCollection = new ArrayList<>();
-    List<Artist> ArtistCollection = new ArrayList<>();
-    List<Release> ReleaseCollection = new ArrayList<>();
+    List<Song> SongCollection;
+    List<Artist> ArtistCollection;
+    List<Release> ReleaseCollection;
+
+    public Library () {
+        SongCollection = new ArrayList<>();
+        ArtistCollection = new ArrayList<>();
+        ReleaseCollection = new ArrayList<>();
+    }
+
+    public void populateArtistData() {
+        List<List<String>> data = 
+    }
 }
