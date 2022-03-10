@@ -4,11 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import ;
+import java.util.List;
 
 public class Browsing{
 
-    public static void browse(Library db){
+    public static void browse(Database.Library db){
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
         while(true){
             //prints all artists
@@ -24,9 +24,11 @@ public class Browsing{
 
             //checks if artist is in library
             int contains = 0;
-            for (Artist a : db.getArtists() ){
+            Database.Artist b = null;
+            for (Database.Artist a : db.getArtists() ){
                 if(a.getName().toLowerCase().equals(input.toLowerCase())){
                     contains = 1;
+                    b = a;
                     break;
                 }
             }
@@ -40,7 +42,8 @@ public class Browsing{
             else if (contains == 1){
                 while(true){
                     //print single songs and releases
-                    printArtistInfo(Artist a);
+                    //needs toString in Artist class to get rid of error below
+                    printArtistInfo(b);
 
                     System.out.println("Please enter a Release Title or \'Back\' to go back.:");
                     try{
@@ -78,8 +81,8 @@ public class Browsing{
 
 
     }
-    public static void printArtists(List list ){
-        for (Artist a : list ){
+    public static void printArtists(List<Database.Artist> list ){
+        for (Database.Artist a : list ){
             System.out.println(a);
         }
     }

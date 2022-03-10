@@ -7,7 +7,7 @@ public class CommandLine {
     public static void main(String[] args){
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
         State currentState = null;
-        Library db = new Library();
+        Database.Library db = new Database.Library();
         while (true){
             System.out.println("Please enter your request followed by any necessary parameters." +
                     "Or, enter \'Help\', to be shown a list of possible requests.");
@@ -31,8 +31,8 @@ public class CommandLine {
                         "\n\nParameters: \'Edit\' ()," +
                         "\'Browse\' (No parameters)," +
                         "\'Search\' (What you are searching for(Artist, Song, Release), " +
-                        "how you want to search for it, and what the system should use to search for it." +
-                        "\nRequest Example: \"Search Song ByTitle \'Mr. Blue Sky\'\" (please make sure " +
+                        "which library you want to search (personal vs global), how you want to search for it, and what the system should use to search for it." +
+                        "\nRequest Example: \"Search Personal Song ByTitle \'Mr. Blue Sky\'\" (please make sure " +
                         "the final parameter has \"\" around it.");
             }else if(tokens2[0].equals("edit")){
                 currentState = new EditState();
