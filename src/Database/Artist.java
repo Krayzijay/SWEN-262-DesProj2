@@ -1,4 +1,5 @@
-package Database;
+package src.Database;
+import Database.Song;
 
 import java.util.ArrayList;
 import java.util.List;

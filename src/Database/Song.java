@@ -1,4 +1,5 @@
-package Database;
+package src.Database;
+
 
 public class Song {
     String GUID = null;

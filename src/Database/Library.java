@@ -1,4 +1,4 @@
-package Database;
+package src.Database;
 
 import java.io.IOException;
 import java.util.ArrayList;
