@@ -1,5 +1,5 @@
 package src;
 
 public interface State {
-    public void execute(Library db, String[] tokens);
+    public void execute(Database.Library db, String[] tokens);
 }
