@@ -1,4 +1,4 @@
-package src;
+package src.SearchStrategys;
 
 /**
  * The concrete implementation for searching the user's
@@ -9,7 +9,7 @@ package src;
 public class SearchLibrarySongByReleaseGUID implements SearchStrategy {
 
     @Override
-    public void search() {
+    public void search(String s) {
         
     }
     

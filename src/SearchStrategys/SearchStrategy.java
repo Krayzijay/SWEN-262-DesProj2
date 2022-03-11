@@ -1,4 +1,4 @@
-package src;
+package src.SearchStrategys;
 
 /**
  * The interface for outlining the strategy pattern

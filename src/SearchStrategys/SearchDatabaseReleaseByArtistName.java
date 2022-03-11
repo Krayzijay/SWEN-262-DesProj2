@@ -1,4 +1,5 @@
-package src;
+package src.SearchStrategys;
+
 
 /**
  * The concrete implementation for searching the
@@ -9,7 +10,7 @@ package src;
 public class SearchDatabaseReleaseByArtistName implements SearchStrategy {
 
     @Override
-    public void search() {
+    public void search(String s) {
         
     }
     
