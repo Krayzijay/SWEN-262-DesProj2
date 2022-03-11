@@ -1,16 +1,30 @@
 package src;
 import java.io.*;
-//import java.util.Locale;
+import src.Database.*;
 
 public class CommandLine {
 
     public static void main(String[] args){
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
         State currentState = null;
-        Database.Library db = new Database.Library();
+        Library db = new Library();
+        try{
+            db.populateArtistData();
+            db.populateReleaseData();
+            db.populateSongData();
+        }catch (IOException e){
+            try{
+                db.populateArtistData();
+                db.populateReleaseData();
+                db.populateSongData();
+            }catch (IOException f){
+
+            }
+        }
+
         while (true){
             System.out.println("Please enter your request followed by any necessary parameters." +
-                    "Or, enter \'Help\', to be shown a list of possible requests.");
+                    "You can also enter \'Help\' to be shown a list of possible requests.");
 
             String input = "";
             try{
@@ -20,7 +34,7 @@ public class CommandLine {
             }
 
             input = input.toLowerCase();
-            String[] tokens = input.split("'");
+            String[] tokens = input.split("\"");
             String[] tokens2 = tokens[0].split(" ");
             if(tokens2[0].equals("help")) {
                 System.out.println("Possible Requests and Parameters:" +
@@ -28,12 +42,17 @@ public class CommandLine {
                         "\'Browse\' (allows user to browse through their personal library), " +
                         "\'Search\' (Allows the user to search for songs in their personal or global library)." +
 
-                        "\n\nParameters: \'Edit\' ()," +
-                        "\'Browse\' (No parameters)," +
+                        "\n\nParameters: \'Edit\' (Whether you want to \'Add\', \'Remove\', or \'Rate\' a Song/Artist/Release, What item you want tp edit " +
+                        "(Song, Release, Artist), and the Name/Title of the Song/Artist/Release. If you are adding a Song or Release, you can include the date (Month/Day/Year)" +
+                        "however, this is optionally and the current date will be used if no date is given." +
+                        "\nRequest Example (Add): \'Edit Add Song 12/04/2003 \"Mr. Blue Sky\"\'" +
+                        "\nRequest Example (Add): \'Edit Remove Song \"Mr. Blue Sky\"\' " +
+                        " (please make sure the final parameter (Name/Title) has \"\" around it.)" +
+                        "\'Browse\' (No parameters, just enter \'Browse\')," +
                         "\'Search\' (What you are searching for(Artist, Song, Release), " +
-                        "which library you want to search (personal vs global), how you want to search for it, and what the system should use to search for it." +
+                        "which library you want to search (personal vs global), how you want to search for it, and what the system should use to search for it.)" +
                         "\nRequest Example: \"Search Personal Song ByTitle \'Mr. Blue Sky\'\" (please make sure " +
-                        "the final parameter has \"\" around it.");
+                        "the final parameter (the name/title) has \"\" around it.");
             }else if(tokens2[0].equals("edit")){
                 currentState = new EditState();
                 currentState.execute(db, tokens);
@@ -47,8 +66,8 @@ public class CommandLine {
                 break;
             }
             else{
-                System.out.println(tokens.toString());
-                //System.out.println("You didn't enter one of the provided keywords. Please try again.");
+                //System.out.println(tokens.toString());
+                System.out.println("You didn't enter one of the provided keywords. Please try again.");
             }
         }
     }
