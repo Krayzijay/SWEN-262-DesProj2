@@ -7,5 +7,5 @@ package src.SearchStrategys;
  * @author Bryson VerDow
  */
 public interface SearchStrategy {
-    public void search();
+    public void search(String specification);
 }

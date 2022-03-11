@@ -9,7 +9,7 @@ package src.SearchStrategys;
 public class SearchLibraryReleaseByMinDuration implements SearchStrategy {
 
     @Override
-    public void search() {
+    public void search(String specification) {
         
     }
     
