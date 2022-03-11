@@ -16,7 +16,7 @@ public class Browsing{
         while(true){
             //prints all artists
             System.out.println("List of Artists:");
-            printAllArtists(db.getLibraryArtistCollection());
+            printAllArtists(db.getArtists());
 
             //user chooses an artist
             System.out.println("Please enter a Artist's name or \'Back\' to go back.:");
@@ -27,7 +27,7 @@ public class Browsing{
 
             //checks if artist is in library
             Artist b = null;
-            for (Artist a : db.getLibraryArtistCollection() ){
+            for (Artist a : db.getArtists() ){
                 if(a.getName().toLowerCase().equals(input.toLowerCase())){
                     b = a;
                     break;
@@ -56,7 +56,7 @@ public class Browsing{
                         break;
                     }else{
                         //print release info
-                        printRelease(db.getLibraryReleaseCollection(), input);
+                        printRelease(db.getReleases(), input);
                     }
                 }
 
