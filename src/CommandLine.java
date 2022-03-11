@@ -7,19 +7,14 @@ public class CommandLine {
     public static void main(String[] args){
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
         State currentState = null;
-        Library db = new Library();
+        Library personal = new Library();
+        Library global = new Library();
         try{
-            db.populateArtistData();
-            db.populateReleaseData();
-            db.populateSongData();
+            global.populateArtistData();
+            global.populateReleaseData();
+            global.populateSongData();
         }catch (IOException e){
-            try{
-                db.populateArtistData();
-                db.populateReleaseData();
-                db.populateSongData();
-            }catch (IOException f){
 
-            }
         }
 
         while (true){
@@ -57,13 +52,13 @@ public class CommandLine {
                         "the final parameter (the name/title) has \"\" around it.");
             }else if(tokens2[0].equals("edit")){
                 currentState = new EditState();
-                currentState.execute(db, tokens);
+                currentState.execute(global, personal, tokens);
             }else if(tokens2[0].equals("browse")){
                 currentState = new BrowseState();
-                currentState.execute(db, tokens);
+                currentState.execute(global, personal, tokens);
             }else if(tokens2[0].equals("search")){
                 currentState = new SearchState();
-                currentState.execute(db, tokens);
+                currentState.execute(global, personal, tokens);
             }else if (tokens2[0].equals("exit")){
                 break;
             }
