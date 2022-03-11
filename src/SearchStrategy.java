@@ -7,5 +7,5 @@ package src;
  * @author Bryson VerDow
  */
 public interface SearchStrategy {
-    public void search();
+    public void search(String searchParameter);
 }
