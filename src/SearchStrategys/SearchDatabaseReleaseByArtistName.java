@@ -1,4 +1,4 @@
-package src;
+package src.SearchStrategys;
 
 /**
  * The concrete implementation for searching the
