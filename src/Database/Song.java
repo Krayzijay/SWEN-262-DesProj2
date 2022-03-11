@@ -1,5 +1,10 @@
 package Database;
 
+/**
+ * A class which represents a Song
+ * 
+ * @author Michael Ambrose
+ */
 public class Song {
     String GUID = null;
     String title = null;
@@ -8,6 +13,7 @@ public class Song {
     float userRating;
     float avgRating;
 
+    //Constructor
     public Song(String GUID, Artist artist, int duration, String title) {
         this.GUID = GUID;
         this.artist = artist;

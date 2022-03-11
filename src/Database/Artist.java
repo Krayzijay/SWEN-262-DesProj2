@@ -3,6 +3,11 @@ package Database;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class which represents an Artist
+ * 
+ * @author Michael Ambrose
+ */
 public class Artist {
     String GUID = null;
     String name = null;
@@ -10,6 +15,7 @@ public class Artist {
     List<Song> songs;
     List<Release> releases;
 
+    //Constructor without type
     public Artist(String GUID, String name) {
         this.GUID = GUID;
         this.name = name;
@@ -17,6 +23,7 @@ public class Artist {
         releases = new ArrayList<>();
     }
 
+    //Constructor with type
     public Artist(String GUID, String name, String type) {
         this.GUID = GUID;
         this.name = name;
@@ -25,13 +32,12 @@ public class Artist {
         releases = new ArrayList<>();
     }
 
+    //returns true if the given guid matches an artist's guid
     public boolean getArtist(String id) {
         return this.GUID.equals(id);
     }
 
-    public String getGUID() {
-        return GUID;
-    }
+    public String getGUID() {return this.GUID;}
 
     public String getName() {return this.name;}
 

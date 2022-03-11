@@ -3,6 +3,11 @@ package Database;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class which represents a Release
+ * 
+ * @author Michael Ambrose
+ */
 public class Release {
     String GUID = null;
     String title = null;
