@@ -1,6 +1,7 @@
 package src;
 import src.Database.*;
-import java.util.ArrayList;
+import src.SearchStrategys.SearchStrategy;
+
 import java.util.List;
 
 public class Searching {
