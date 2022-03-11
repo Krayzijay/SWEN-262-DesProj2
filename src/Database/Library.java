@@ -19,11 +19,6 @@ public class Library {
         DatabaseSongCollection = new ArrayList<>();
         DatabaseArtistCollection = new ArrayList<>();
         DatabaseReleaseCollection = new ArrayList<>();
-
-        LibrarySongCollection = new ArrayList<>();
-        LibraryArtistCollection = new ArrayList<>();
-        LibraryReleaseCollection = new ArrayList<>();
-
     }
 
     public synchronized void populateArtistData() throws IOException {
