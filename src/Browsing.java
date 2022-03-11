@@ -1,19 +1,22 @@
 package src;
 
+import src.Database.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Browsing{
 
-    public static void browse(Database.Library db){
+    public static void browse(Library db){
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
         while(true){
             //prints all artists
             System.out.println("List of Artists:");
-            printArtists(db.getArtists());
+            printAllArtists(db.getLibraryArtistCollection());
 
             //user chooses an artist
             System.out.println("Please enter a Artist's name or \'Back\' to go back.:");
@@ -23,11 +26,9 @@ public class Browsing{
             } catch (IOException e){}
 
             //checks if artist is in library
-            int contains = 0;
-            Database.Artist b = null;
-            for (Database.Artist a : db.getArtists() ){
+            Artist b = null;
+            for (Artist a : db.getLibraryArtistCollection() ){
                 if(a.getName().toLowerCase().equals(input.toLowerCase())){
-                    contains = 1;
                     b = a;
                     break;
                 }
@@ -39,7 +40,7 @@ public class Browsing{
             }
 
             //if artist selects an artist
-            else if (contains == 1){
+            else if (b != null){
                 while(true){
                     //print single songs and releases
                     //needs toString in Artist class to get rid of error below
@@ -55,7 +56,7 @@ public class Browsing{
                         break;
                     }else{
                         //print release info
-                        printRelease(input)
+                        printRelease(db.getLibraryReleaseCollection(), input);
                     }
                 }
 
@@ -81,32 +82,36 @@ public class Browsing{
 
 
     }
-    public static void printArtists(List<Database.Artist> list ){
-        for (Database.Artist a : list ){
+    public static void printAllArtists(List<Artist> list ){
+        for (Artist a : list ){
             System.out.println(a);
         }
     }
 
-    public static void printRelease(String name){
-        Release r = release list .get(name);
+    public static void printRelease(List<Release> releases, String name){
+        Release r = null;
+        for (Release i : releases ){
+            if(i.getTitle().toLowerCase().equals(name)){
+                r = i;
+                break;
+            }
+        }
         System.out.println(r);
     }
 
-    public static void printArtistInfo(String name){
-        //finds the artist instance
-        Artist a = artist list .get(name);
+    public static void printArtistInfo(Artist chosen){
 
         //gets the artists songs and releases
-        ArrayList allSongs = a.getSongs();
-        ArrayList allReleases = a.getReleases();
+        List<Song> allSongs = chosen.getSongs();
+        List<Release> allReleases = chosen.getReleases();
 
         //list of songs belonging to the artist that arent part of a release
-        ArrayList singleSongs = new ArrayList(allSongs.size());
+        List<Song> singleSongs = new ArrayList(allSongs.size());
 
         //finds which songs are not part of a release
         for(Song s : allSongs){
             for(Release r : allReleases){
-                ArrayList songs = r.getSongs();
+                List<Song> songs = r.getTracks();
                 if((songs.contains(s))){
                     //do nothing
                 }

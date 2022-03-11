@@ -1,9 +1,9 @@
 package src;
-
+import src.Database.Library;
 public class SearchState implements State{
 
     @Override
-    public void execute(Database.Library db, String[] tokens){
+    public void execute(Library db, String[] tokens){
         Searching s = new Searching(db);
 
         String[] keyWords = tokens[0].split(" ");
@@ -93,6 +93,6 @@ public class SearchState implements State{
 
             }
         }
-        s.executeStrategy();
+        s.executeStrategy(param);
     }
 }
