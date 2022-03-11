@@ -1,5 +1,4 @@
 package src.Database;
-import Database.Song;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +42,15 @@ public class Artist {
             return this.type;
     }
 
+    public List<Release> getReleases() {
+        return releases;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    @Override
     public String toString() {
         if(this.type != null)
             return "Name: " + this.name + ", Type: " + this.type;

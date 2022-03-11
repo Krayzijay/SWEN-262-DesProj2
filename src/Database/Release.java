@@ -22,6 +22,10 @@ public class Release {
         this.tracks = tracks;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     public String getGUID() {return this.GUID;}
 
     public Artist getArtist() {return this.getArtist();}

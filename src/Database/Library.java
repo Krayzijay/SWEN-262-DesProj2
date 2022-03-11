@@ -7,15 +7,23 @@ import java.util.List;
 import parser.Reader;
 
 public class Library {
-    List<Song> SongCollection;
-    List<Artist> ArtistCollection;
-    List<Release> ReleaseCollection;
+    List<Song> DatabaseSongCollection;
+    List<Artist> DatabaseArtistCollection;
+    List<Release> DatabaseReleaseCollection;
+    List<Song> LibrarySongCollection;
+    List<Artist> LibraryArtistCollection;
+    List<Release> LibraryReleaseCollection;
     List<List<String>> data;
 
     public Library () {
-        SongCollection = new ArrayList<>();
-        ArtistCollection = new ArrayList<>();
-        ReleaseCollection = new ArrayList<>();
+        DatabaseSongCollection = new ArrayList<>();
+        DatabaseArtistCollection = new ArrayList<>();
+        DatabaseReleaseCollection = new ArrayList<>();
+
+        LibrarySongCollection = new ArrayList<>();
+        LibraryArtistCollection = new ArrayList<>();
+        LibraryReleaseCollection = new ArrayList<>();
+
     }
 
     public synchronized void populateArtistData() throws IOException {
@@ -23,10 +31,10 @@ public class Library {
 
         for(int i = 0; i < data.size(); i++) {
             if(data.get(i).size() == 2) {
-                ArtistCollection.add(new Artist(data.get(i).get(0), data.get(i).get(1)));
+                DatabaseArtistCollection.add(new Artist(data.get(i).get(0), data.get(i).get(1)));
             }
             else {
-                ArtistCollection.add(new Artist(data.get(i).get(0), data.get(i).get(1), data.get(i).get(2)));
+                DatabaseArtistCollection.add(new Artist(data.get(i).get(0), data.get(i).get(1), data.get(i).get(2)));
             }
         }
     }
@@ -43,7 +51,7 @@ public class Library {
 
             guid = record.get(0);
 
-            for (Artist artist : ArtistCollection) {
+            for (Artist artist : DatabaseArtistCollection) {
                 if(artist.getArtist(record.get(1)))
                     matching_artist = artist;
             }
@@ -61,7 +69,7 @@ public class Library {
                 }
             }
 
-            SongCollection.add(new Song(guid, matching_artist, duration, title));
+            DatabaseSongCollection.add(new Song(guid, matching_artist, duration, title));
         }
     }
 
@@ -81,7 +89,7 @@ public class Library {
             guid = record.get(0);
 
             //Gets Artist by matching GUID of artist in collection with GUID of artist in release
-            for (Artist artist : ArtistCollection) {
+            for (Artist artist : DatabaseArtistCollection) {
                 if(artist.getArtist(record.get(1)))
                     matching_artist = artist;
             }
@@ -101,13 +109,37 @@ public class Library {
                 }
             }
 
-            ReleaseCollection.add(new Release(guid, matching_artist, title, medium, date, tracks));  
+            DatabaseReleaseCollection.add(new Release(guid, matching_artist, title, medium, date, tracks));
         }
+    }
+
+    public List<Artist> getDatabaseArtistCollection() {
+        return DatabaseArtistCollection;
+    }
+
+    public List<Release> getDatabaseReleaseCollection() {
+        return DatabaseReleaseCollection;
+    }
+
+    public List<Song> getDatabaseSongCollection() {
+        return DatabaseSongCollection;
+    }
+
+    public List<Artist> getLibraryArtistCollection() {
+        return LibraryArtistCollection;
+    }
+
+    public List<Release> getLibraryReleaseCollection() {
+        return LibraryReleaseCollection;
+    }
+
+    public List<Song> getLibrarySongCollection() {
+        return LibrarySongCollection;
     }
 
     public Song songToTrack(String id) {
         Song song = null;
-        for(Song o : SongCollection) {
+        for(Song o : DatabaseSongCollection) {
             if(o.getGUID().equals(id))
                 song = o;
         }
@@ -120,6 +152,6 @@ public class Library {
         lib.populateSongData();
         lib.populateReleaseData();
 
-        System.out.println(lib.ReleaseCollection.get(5).getTracks().get(0).getGUID());
+        System.out.println(lib.DatabaseReleaseCollection.get(5).getTracks().get(0).getGUID());
     }
 }
