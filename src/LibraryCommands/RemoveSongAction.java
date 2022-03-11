@@ -1,5 +1,5 @@
-package LibraryCommands;
-
+package src.LibraryCommands;
+import src.Database.Library;
 /**
  * The concrete command implementation for removing
  * a song from a user's library.
@@ -10,7 +10,7 @@ public class RemoveSongAction implements LibraryAction {
     private String oldSong;
 
     @Override
-    public void performAction() {
+    public void performAction(Library db, String itemName, String date, int rating) {
         
     }
     

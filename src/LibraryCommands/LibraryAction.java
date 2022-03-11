@@ -1,4 +1,6 @@
-package LibraryCommands;
+package src.LibraryCommands;
+
+import src.Database.Library;
 
 /**
  * The command interface for outlining implementations
@@ -7,5 +9,5 @@ package LibraryCommands;
  * @author Bryson VerDow
  */
 public interface LibraryAction {
-    public void performAction();
+    public void performAction(Library db, String itemName, String date, int rating);
 }
