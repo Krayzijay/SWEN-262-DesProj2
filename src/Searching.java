@@ -5,31 +5,24 @@ import src.SearchStrategys.SearchStrategy;
 import java.util.List;
 
 public class Searching {
-    SearchStrategy current;
-    List<Song> DBSongCollection;
-    List<Artist> DBArtistCollection;
-    List<Release> DBReleaseCollection;
+    SearchStrategy currentStrategy;
+    List<Song> SongCollection;
+    List<Artist> ArtistCollection;
+    List<Release> ReleaseCollection;
 
-    List<Song> LibrarySongCollection;
-    List<Artist> LibraryArtistCollection;
-    List<Release> LibraryReleaseCollection;
 
     public Searching(Library db){
-        DBSongCollection = db.getDatabaseSongCollection();
-        DBArtistCollection = db.getDatabaseArtistCollection();
-        DBReleaseCollection = db.getDatabaseReleaseCollection();
+        SongCollection = db.getSongs();
+        ArtistCollection = db.getArtists();
+        ReleaseCollection = db.getReleases();
 
-        LibrarySongCollection = db.getLibrarySongCollection();
-        LibraryArtistCollection = db.getLibraryArtistCollection();
-        LibraryReleaseCollection = db.getLibraryReleaseCollection();
-
-        current = null;
+        currentStrategy = null;
     }
 
     public void setStrategy(SearchStrategy s){
-        this.current = s;
+        this.currentStrategy = s;
     }
-    public void executeStrategy(String param){
-        this.current.search(param);
+    public void executeStrategy(Library library, String param){
+        this.currentStrategy.search(library, param);
     }
 }

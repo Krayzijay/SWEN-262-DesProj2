@@ -5,8 +5,9 @@ import src.SearchStrategys.*;
 public class SearchState implements State{
 
     @Override
-    public void execute(Library db, String[] tokens){
-        Searching s = new Searching(db);
+    public void execute(Library global, Library personal, String[] tokens){
+        Searching g = new Searching(global);
+        Searching p = new Searching(personal);
 
         String[] keyWords = tokens[0].split(" ");
         String library = keyWords[1].toLowerCase();
@@ -14,87 +15,100 @@ public class SearchState implements State{
         String searchBy = keyWords[3].toLowerCase();
         String param = tokens[1].toLowerCase();
 
+        int whichLibrary = 0;
+
         if(library.equals("global")){
+            whichLibrary = 1;
             if(item.equals("artist")){
                 if(searchBy.equals("byname")){
-                    s.setStrategy(new SearchDatabaseArtistByName());
+                    g.setStrategy(new SearchDatabaseArtistByName());
                 }
             }else if(item.equals("song")){
                 if(searchBy.equals("byname") || searchBy.equals("bytitle")){
-                    s.setStrategy(new SearchDatabaseSongByTitle());
+                    g.setStrategy(new SearchDatabaseSongByTitle());
                 }else if(searchBy.equals("bymaxduration")){
-                    s.setStrategy(new SearchDatabaseSongByMaxDuration());
+                    g.setStrategy(new SearchDatabaseSongByMaxDuration());
                 }else if(searchBy.equals("byminduration")){
-                    s.setStrategy(new SearchDatabaseSongByMinDuration());
+                    g.setStrategy(new SearchDatabaseSongByMinDuration());
                 }else if(searchBy.equals("byartist")){
-                    s.setStrategy(new SearchDatabaseSongByArtist());
+                    g.setStrategy(new SearchDatabaseSongByArtist());
                 }
 
             }else if(item.equals("release")){
                 if(searchBy.equals("byartistname")){
-                    s.setStrategy(new SearchDatabaseReleaseByArtistName());
+                    g.setStrategy(new SearchDatabaseReleaseByArtistName());
                 }else if(searchBy.equals("byartistguid")){
-                    s.setStrategy(new SearchDatabaseReleaseByArtistGUID());
+                    g.setStrategy(new SearchDatabaseReleaseByArtistGUID());
                 }else if(searchBy.equals("bydaterange")){
-                    s.setStrategy(new SearchDatabaseReleaseByDateRange());
+                    g.setStrategy(new SearchDatabaseReleaseByDateRange());
                 }else if(searchBy.equals("bytitle")){
-                    s.setStrategy(new SearchDatabaseReleaseByTitle());
+                    g.setStrategy(new SearchDatabaseReleaseByTitle());
                 }else if(searchBy.equals("bytrackguid")){
-                    s.setStrategy(new SearchDatabaseReleaseByTrackGUID());
+                    g.setStrategy(new SearchDatabaseReleaseByTrackGUID());
                 }else if(searchBy.equals("bytrackname")){
-                    s.setStrategy(new SearchDatabaseReleaseByTrackName());
+                    g.setStrategy(new SearchDatabaseReleaseByTrackName());
                 }
             }
+
         }else if (library.equals("personal")) {
+            whichLibrary = 2;
             if(item.equals("artist")){
                 if(searchBy.equals("byminrating")){
-                    s.setStrategy(new SearchLibraryArtistByMinRating());
+                    p.setStrategy(new SearchLibraryArtistByMinRating());
                 }else if(searchBy.equals("byname")){
-                    s.setStrategy(new SearchLibraryArtistByName());
+                    p.setStrategy(new SearchLibraryArtistByName());
                 }else if(searchBy.equals("bytype")){
-                    s.setStrategy(new SearchLibraryArtistByType());
+                    p.setStrategy(new SearchLibraryArtistByType());
                 }
 
             }else if(item.equals("song")){
                 if(searchBy.equals("byartistguid")){
-                    s.setStrategy(new SearchLibrarySongByArtistGUID());
+                    p.setStrategy(new SearchLibrarySongByArtistGUID());
                 }else if(searchBy.equals("byartistname")){
-                    s.setStrategy(new SearchLibrarySongByArtistName());
+                    p.setStrategy(new SearchLibrarySongByArtistName());
                 }else if(searchBy.equals("bymaxduration")){
-                    s.setStrategy(new SearchLibrarySongByMaxDuration());
+                    p.setStrategy(new SearchLibrarySongByMaxDuration());
                 }else if(searchBy.equals("byminduration")){
-                    s.setStrategy(new SearchLibrarySongByMinDuration());
+                    p.setStrategy(new SearchLibrarySongByMinDuration());
                 }else if(searchBy.equals("byminrating")){
-                    s.setStrategy(new SearchLibrarySongByMinRating());
+                    p.setStrategy(new SearchLibrarySongByMinRating());
                 }else if(searchBy.equals("byreleaseguid")){
-                    s.setStrategy(new SearchLibrarySongByReleaseGUID());
+                    p.setStrategy(new SearchLibrarySongByReleaseGUID());
                 }else if(searchBy.equals("byreleasetitle")){
-                    s.setStrategy(new SearchLibrarySongByReleaseTitle());
+                    p.setStrategy(new SearchLibrarySongByReleaseTitle());
                 }else if(searchBy.equals("bytitle")){
-                    s.setStrategy(new SearchLibrarySongByTitle());
+                    p.setStrategy(new SearchLibrarySongByTitle());
                 }
 
             }else if(item.equals("release")){
                 if(searchBy.equals("byartistguid")){
-                    s.setStrategy(new SearchLibraryReleaseByArtistGUID());
+                    p.setStrategy(new SearchLibraryReleaseByArtistGUID());
                 }else if(searchBy.equals("byartistname")){
-                    s.setStrategy(new SearchLibraryReleaseByArtistName());
+                    p.setStrategy(new SearchLibraryReleaseByArtistName());
                 }else if(searchBy.equals("bymaxduration")){
-                    s.setStrategy(new SearchLibraryReleaseByMaxDuration());
+                    p.setStrategy(new SearchLibraryReleaseByMaxDuration());
                 }else if(searchBy.equals("byminduration")){
-                    s.setStrategy(new SearchLibraryReleaseByMinDuration());
+                    p.setStrategy(new SearchLibraryReleaseByMinDuration());
                 }else if(searchBy.equals("byminrating")){
-                    s.setStrategy(new SearchLibraryReleaseByMinRating());
+                    p.setStrategy(new SearchLibraryReleaseByMinRating());
                 }else if(searchBy.equals("bytitle")){
-                    s.setStrategy(new SearchLibraryReleaseByTitle());
+                    p.setStrategy(new SearchLibraryReleaseByTitle());
                 }else if(searchBy.equals("bytrackguid")){
-                    s.setStrategy(new SearchLibraryReleaseByTrackGUID());
+                    p.setStrategy(new SearchLibraryReleaseByTrackGUID());
                 }else if(searchBy.equals("bytrackname")){
-                    s.setStrategy(new SearchLibraryReleaseByTrackName());
+                    p.setStrategy(new SearchLibraryReleaseByTrackName());
                 }
 
             }
+            if (whichLibrary == 1){
+                g.executeStrategy(global, param);
+            }else if (whichLibrary == 2){
+                p.executeStrategy(personal, param);
+            }
+            else{
+                System.out.println("Something went wrong, please try again");
+            }
         }
-        s.executeStrategy(param);
+
     }
 }
