@@ -1,5 +1,7 @@
 package src.SearchStrategys;
 
+import src.Database.Library;
+
 /**
  * The concrete implementation for searching the user's
  * library for songs by artist GUID.
@@ -9,7 +11,7 @@ package src.SearchStrategys;
 public class SearchLibrarySongByArtistGUID implements SearchStrategy {
 
     @Override
-    public void search(String specification) {
+    public void search(Library lib, String specification) {
         
     }
     

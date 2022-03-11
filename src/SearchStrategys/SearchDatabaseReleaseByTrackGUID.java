@@ -1,5 +1,7 @@
 package src.SearchStrategys;
 
+import src.Database.Library;
+
 /**
  * The concrete implementation for searching the
  * entire database for releases by track GUID.
@@ -9,7 +11,7 @@ package src.SearchStrategys;
 public class SearchDatabaseReleaseByTrackGUID implements SearchStrategy {
 
     @Override
-    public void search(String specification) {
+    public void search(Library lib, String specification) {
         
     }
     

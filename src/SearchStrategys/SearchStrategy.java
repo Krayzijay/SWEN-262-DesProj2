@@ -1,5 +1,7 @@
 package src.SearchStrategys;
 
+import src.Database.Library;
+
 /**
  * The interface for outlining the strategy pattern
  * for searching in the system.
@@ -7,5 +9,5 @@ package src.SearchStrategys;
  * @author Bryson VerDow
  */
 public interface SearchStrategy {
-    public void search(String specification);
+    public void search(Library lib, String specification);
 }

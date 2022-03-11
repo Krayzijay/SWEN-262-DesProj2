@@ -3,12 +3,12 @@ package src.SearchStrategys;
 import src.Database.Library;
 
 /**
- * The concrete implementation for searching the user's
- * library for artists by type.
+ * The concrete implementation for searching the given
+ * library for songs by title.
  * 
  * @author Bryson VerDow
  */
-public class SearchLibraryArtistByType implements SearchStrategy {
+public class SearchSongByTitle implements SearchStrategy {
 
     @Override
     public void search(Library lib, String specification) {
