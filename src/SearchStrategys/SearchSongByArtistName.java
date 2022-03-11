@@ -1,5 +1,9 @@
 package src.SearchStrategys;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import src.Database.Song;
 import src.Database.Library;
 
 /**
@@ -12,7 +16,15 @@ public class SearchSongByArtistName implements SearchStrategy {
 
     @Override
     public void search(Library lib, String specification) {
-        
+        List<Song> result = new ArrayList<>();
+        List<Song> songs = lib.getSongs();
+        for(Song song : songs) {
+            if(song.getArtist().getName().toLowerCase().contains(specification.toLowerCase())) {
+                result.add(song);
+            }
+        }
+        result.sort();
+        System.out.println(result);
     }
     
 }
