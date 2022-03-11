@@ -9,7 +9,7 @@ import src.Database.Library;
 public class HelpAction implements LibraryAction {
 
     @Override
-    public void performAction(Library db, String itemName, String date, int rating) {
+    public void performAction(Library global, Library personal, String itemName, String date, int rating) {
         
     }
     

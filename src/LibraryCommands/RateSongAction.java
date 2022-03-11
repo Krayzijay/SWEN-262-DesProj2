@@ -9,7 +9,7 @@ public class RateSongAction implements LibraryAction {
     private String song;
 
     @Override
-    public void performAction(Library db, String itemName, String date, int rating) {
+    public void performAction(Library global, Library personal, String itemName, String date, int rating) {
         
     }
     
