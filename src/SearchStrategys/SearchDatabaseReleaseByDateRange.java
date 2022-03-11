@@ -1,6 +1,8 @@
 package src.SearchStrategys;
 
 
+import src.Database.Library;
+
 /**
  * The concrete implementation for searching the
  * entire database for releases by date range.
@@ -10,7 +12,7 @@ package src.SearchStrategys;
 public class SearchDatabaseReleaseByDateRange implements SearchStrategy {
 
     @Override
-    public void search(String s) {
+    public void search(Library lib, String s) {
         
     }
     

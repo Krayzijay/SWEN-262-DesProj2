@@ -1,5 +1,6 @@
 package src.SearchStrategys;
 
+import src.Database.Library;
 import src.SearchStrategys.SearchStrategy;
 
 /**
@@ -11,8 +12,7 @@ import src.SearchStrategys.SearchStrategy;
 public class SearchLibrarySongByTitle implements SearchStrategy {
 
     @Override
-    public void search(String s) {
-        
+    public void search(Library lib, String specification) {
+
     }
-    
 }
