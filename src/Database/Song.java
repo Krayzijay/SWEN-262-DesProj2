@@ -1,5 +1,4 @@
-package src.Database;
-
+package Database;
 
 /**
  * A class which represents a Song
@@ -12,8 +11,7 @@ public class Song {
     Artist artist = null;
     int duration = 0;
     float userRating;
-    float avgRating;
-
+    
     //Constructor
     public Song(String GUID, Artist artist, int duration, String title) {
         this.GUID = GUID;
@@ -21,20 +19,19 @@ public class Song {
         this.duration = duration;
         this.title = title;
         userRating = 0;
-        avgRating = 0;
     }
 
-    public String getGUID() {
-        return this.GUID;
-    }
+    public void rateSong(float rating) {this.userRating = rating;}
 
-    public String getTitle() {
-        return this.title;
-    }
+    public String getGUID() {return this.GUID;}
 
-    public Artist getArtist() {
-        return this.artist;
-    }
+    public String getTitle() {return this.title;}
+
+    public Artist getArtist() {return this.artist;}
+
+    public int getDuration() {return this.duration;}
+
+    public float getRating() {return this.userRating;}
     
     public String toString() {
         return "Title: " + this.title + ", Artist: " + this.artist.getName() + ", Duration: " + this.duration;

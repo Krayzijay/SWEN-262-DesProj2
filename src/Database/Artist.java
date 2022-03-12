@@ -1,4 +1,4 @@
-package src.Database;
+package Database;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,7 @@ public class Artist {
     String GUID = null;
     String name = null;
     String type = null;
+    float avgRating;
     List<Song> songs;
     List<Release> releases;
 
@@ -19,6 +20,7 @@ public class Artist {
     public Artist(String GUID, String name) {
         this.GUID = GUID;
         this.name = name;
+        avgRating = 0;
         songs = new ArrayList<>();
         releases = new ArrayList<>();
     }
@@ -28,6 +30,7 @@ public class Artist {
         this.GUID = GUID;
         this.name = name;
         this.type = type;
+        avgRating = 0;
         songs = new ArrayList<>();
         releases = new ArrayList<>();
     }
@@ -35,6 +38,20 @@ public class Artist {
     //returns true if the given guid matches an artist's guid
     public boolean getArtist(String id) {
         return this.GUID.equals(id);
+    }
+
+    public void calculateRating() {
+        float rating = 0;
+        int size = 0;
+        
+        for(Song song : songs) {
+            if(song.getRating() != 0) {
+                rating += song.getRating();
+                size++;
+            }
+        }
+
+        this.avgRating = rating/size;
     }
 
     public String getGUID() {return this.GUID;}
@@ -48,15 +65,8 @@ public class Artist {
             return this.type;
     }
 
-    public List<Release> getReleases() {
-        return releases;
-    }
+    public float getRating() {return this.avgRating;}
 
-    public List<Song> getSongs() {
-        return songs;
-    }
-
-    @Override
     public String toString() {
         if(this.type != null)
             return "Name: " + this.name + ", Type: " + this.type;
