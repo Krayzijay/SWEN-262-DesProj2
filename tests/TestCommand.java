@@ -74,13 +74,12 @@ public class TestCommand {
     public void testAddRatingAction() throws IOException {
         //setup
         Library personal = new Library();
-        Library global = new Library();
         Artist artist = new Artist("GUID", "artist");
         Song song = new Song("GUID", artist, 1, "title");
         personal.addSong(song);
 
         // actual
-        RateSongAction action = new RateSongAction(global, personal);
+        RateSongAction action = new RateSongAction(personal);
         action.performAction("title", 5);
 
         // test
@@ -95,14 +94,13 @@ public class TestCommand {
     public void testRemoveReleaseAction() throws IOException {
         //setup
         Library personal = new Library();
-        Library global = new Library();
         Artist artist = new Artist("GUID", "artist");
         ArrayList<Song> songs = new ArrayList<>() {{add(new Song("GUID", artist, 1, "title"));}};
         Release expected = new Release("1234", artist, "a release", "medium", "01/01/2001", songs);
         personal.addRelease(expected);
 
         // actual
-        RemoveReleaseAction action = new RemoveReleaseAction(global, personal);
+        RemoveReleaseAction action = new RemoveReleaseAction(personal);
         action.performAction("a release", "01/01/2001");
 
         // test
@@ -117,13 +115,12 @@ public class TestCommand {
     public void testRemoveSongAction() throws IOException {
         //setup
         Library personal = new Library();
-        Library global = new Library();
         Artist artist = new Artist("GUID", "artist");
         Song song = new Song("GUID", artist, 1, "title");
         personal.addSong(song);
 
         // actual
-        RemoveSongAction action = new RemoveSongAction(global, personal);
+        RemoveSongAction action = new RemoveSongAction(personal);
         action.performAction("title");
 
         // test
