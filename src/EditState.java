@@ -29,28 +29,28 @@ public class EditState implements State{
 
         if (command.toLowerCase().equals("add")){
             if(itemType.toLowerCase().equals("song")){
-                AddSongAction a = new AddSongAction();
-                a.performAction(global, personal, name, date, rating);
+                AddSongAction a = new AddSongAction(global, personal);
+                a.performAction(name, date, rating);
             }
             else if(itemType.toLowerCase().equals("release")){
-                AddReleaseAction a = new AddReleaseAction();
-                a.performAction(global, personal, name, date, rating);
+                AddReleaseAction a = new AddReleaseAction(global, personal);
+                a.performAction(name, date, rating);
             }
 
         }else if (command.toLowerCase().equals("remove")){
             if(itemType.toLowerCase().equals("song")){
-                RemoveSongAction a = new RemoveSongAction();
-                a.performAction(global, personal, name, date, rating);
+                RemoveSongAction a = new RemoveSongAction(personal);
+                a.performAction(name, date, rating);
             }
             else if(itemType.toLowerCase().equals("release")){
-                RemoveReleaseAction a = new RemoveReleaseAction();
-                a.performAction(global, personal, name, date, rating);
+                RemoveReleaseAction a = new RemoveReleaseAction(personal);
+                a.performAction(name, date, rating);
             }
 
         }else if (command.toLowerCase().equals("rate")){
             if(itemType.toLowerCase().equals("song")){
-                RateSongAction a = new RateSongAction();
-                a.performAction(global, personal, name, date, rating);
+                RateSongAction a = new RateSongAction(personal);
+                a.performAction(name, date, rating);
             }
         }
 
