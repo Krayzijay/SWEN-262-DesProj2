@@ -1,8 +1,10 @@
 package src.SearchStrategys;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import src.Database.Release;
 import src.Database.Song;
 import src.Database.Library;
 
@@ -17,11 +19,16 @@ public class SearchSongByReleaseGUID implements SearchStrategy {
     @Override
     public void search(Library lib, String specification) {
         List<Song> result = new ArrayList<>();
-        List<Song> songs = lib.getSongs();
-        for(Song song : songs) {
-            
+        List<Release> releases = lib.getReleases();
+        for(Release release : releases) {
+            if(release.getGUID().equals(specification)) {
+                List<Song> songs = release.getTracks();
+                for(Song song : songs) {
+                    result.add(song);
+                }
+            }
         }
-        result.sort();
+        Collections.sort(result);
         System.out.println(result);
     }
     

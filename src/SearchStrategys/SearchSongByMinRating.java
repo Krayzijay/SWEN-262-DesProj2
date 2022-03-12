@@ -1,6 +1,7 @@
 package src.SearchStrategys;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import src.Database.Song;
@@ -18,10 +19,13 @@ public class SearchSongByMinRating implements SearchStrategy {
     public void search(Library lib, String specification) {
         List<Song> result = new ArrayList<>();
         List<Song> songs = lib.getSongs();
+        int minRating = Integer.parseInt(specification);
         for(Song song : songs) {
-            
+            if(song.getRating() > minRating) {
+                result.add(song);
+            }
         }
-        result.sort();
+        Collections.sort(result);
         System.out.println(result);
     }
     

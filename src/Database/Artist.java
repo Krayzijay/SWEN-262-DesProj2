@@ -3,7 +3,7 @@ package Database;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Artist {
+public class Artist implements Comparable<Artist> {
     String GUID = null;
     String name = null;
     String type = null;
@@ -21,5 +21,10 @@ public class Artist {
 
     public String getGUID() {
         return GUID;
+    }
+
+    @Override
+    public int compareTo(Artist other) {
+        return this.name.compareTo(other.getName());
     }
 }

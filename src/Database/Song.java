@@ -1,6 +1,6 @@
 package Database;
 
-public class Song {
+public class Song implements Comparable<Song> {
     String GUID = null;
     String title = null;
     Artist artist = null;
@@ -15,5 +15,10 @@ public class Song {
         this.title = title;
         userRating = 0;
         avgRating = 0;
+    }
+
+    @Override
+    public int compareTo(Song other) {
+        return this.title.compareTo(other.getTitle());
     }
 }

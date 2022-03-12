@@ -1,6 +1,7 @@
 package src.SearchStrategys;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import src.Database.Release;
@@ -18,10 +19,14 @@ public class SearchReleaseByMinDuration implements SearchStrategy {
     public void search(Library lib, String specification) {
         List<Release> result = new ArrayList<>();
         List<Release> releases = lib.getReleases();
+        int minDuration = Integer.parseInt(specification);
         for(Release release : releases) {
-            
+            int duration = release.getDuration();
+            if(duration > minDuration) {
+                result.add(release);
+            }
         }
-        result.sort();
+        Collections.sort(result);
         System.out.println(result);
     }
     

@@ -3,7 +3,7 @@ package Database;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Release {
+public class Release implements Comparable<Release> {
     String GUID = null;
     String title = null;
     Artist artist = null;
@@ -25,6 +25,11 @@ public class Release {
         this.date = date;
         this.medium = medium;
         this.tracks = tracks;
+    }
+
+    @Override
+    public int compareTo(Release other) {
+        return this.title.compareTo(other.getTitle());
     }
     
 }

@@ -1,6 +1,7 @@
 package src.SearchStrategys;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import src.Database.Release;
@@ -18,10 +19,13 @@ public class SearchReleaseByMinRating implements SearchStrategy {
     public void search(Library lib, String specification) {
         List<Release> result = new ArrayList<>();
         List<Release> releases = lib.getReleases();
+        int minRating = Integer.parseInt(specification);
         for(Release release : releases) {
-            
+            if(release.getRating() > minRating) {
+                result.add(release);
+            }
         }
-        result.sort();
+        Collections.sort(result);
         System.out.println(result);
     }
     
