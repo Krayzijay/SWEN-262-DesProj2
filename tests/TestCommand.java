@@ -16,6 +16,7 @@ import src.Database.Release;
 import src.Database.Song;
 import src.LibraryCommands.AddReleaseAction;
 import src.LibraryCommands.AddSongAction;
+import src.LibraryCommands.RateSongAction;
 
 @Testable
 public class TestCommand {
@@ -61,6 +62,27 @@ public class TestCommand {
 
         // test
         assertEquals(song, personal.getSongs().get(0), "Testing if the song has been added to the user's collection");
+    }
+
+    /**
+     * Tests that a song has been added to the personal collection
+     * @throws IOException
+     */
+    @Test
+    public void testAddRatingAction() throws IOException {
+        //setup
+        Library personal = new Library();
+        Library global = new Library();
+        Artist artist = new Artist("GUID", "artist");
+        Song song = new Song("GUID", artist, 1, "title");
+        personal.addSong(song);
+
+        // actual
+        RateSongAction action = new RateSongAction(global, personal);
+        action.performAction("title", 5);
+
+        // test
+        assertEquals(song.getUserRating(), personal.getSongs().get(0).getUserRating(), "Testing if the song has been rated by the user");
     }
 
 }

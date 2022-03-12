@@ -35,6 +35,22 @@ public class Song {
     public Artist getArtist() {
         return this.artist;
     }
+
+    public float getUserRating() {
+        return userRating;
+    }
+
+    public float getAvgRating() {
+        return avgRating;
+    }
+
+    public void setUserRating(float userRating) {
+        this.userRating = userRating;
+    }
+
+    public void setAvgRating(float avgRating) {
+        this.avgRating = avgRating;
+    }
     
     public String toString() {
         return "Title: " + this.title + ", Artist: " + this.artist.getName() + ", Duration: " + this.duration;
