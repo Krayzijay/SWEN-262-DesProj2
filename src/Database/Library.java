@@ -173,6 +173,8 @@ public class Library {
 
     
     public List<Artist> getArtists() {return this.ArtistCollection;}
+
     public List<Song> getSongs() {return this.SongCollection;}
+    
     public List<Release> getReleases() {return this.ReleaseCollection;}
 }

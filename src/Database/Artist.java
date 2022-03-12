@@ -9,9 +9,9 @@ import java.util.List;
  * @author Michael Ambrose
  */
 public class Artist {
-    String GUID = null;
-    String name = null;
-    String type = null;
+    private String GUID = null;
+    private String name = null;
+    private String type = null;
     float avgRating;
     List<Song> songs;
     List<Release> releases;

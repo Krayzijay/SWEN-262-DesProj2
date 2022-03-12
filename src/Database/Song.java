@@ -6,10 +6,10 @@ package Database;
  * @author Michael Ambrose
  */
 public class Song {
-    String GUID = null;
-    String title = null;
-    Artist artist = null;
-    int duration = 0;
+    private String GUID = null;
+    private String title = null;
+    private Artist artist = null;
+    private int duration = 0;
     float userRating;
     
     //Constructor

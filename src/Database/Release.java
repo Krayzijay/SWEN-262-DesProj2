@@ -9,11 +9,11 @@ import java.util.List;
  * @author Michael Ambrose
  */
 public class Release {
-    String GUID = null;
-    String title = null;
-    Artist artist = null;
-    String date = null;
-    String medium = null;
+    private String GUID = null;
+    private String title = null;
+    private Artist artist = null;
+    private String date = null;
+    private String medium = null;
     List<Song> tracks = new ArrayList<>();
     float avgRating = 0;
 
