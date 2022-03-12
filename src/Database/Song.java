@@ -42,4 +42,8 @@ public class Song implements Comparable{
         Song r = (Song)o;
         return this.title.compareTo(r.getTitle());
     }
+
+    public void setUserRating(int rating) {
+        this.userRating = rating;
+    }
 }
