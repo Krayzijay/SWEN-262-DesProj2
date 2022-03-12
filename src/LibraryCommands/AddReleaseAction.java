@@ -18,24 +18,32 @@ public class AddReleaseAction implements LibraryAction {
 
     @Override
     public void performAction(String itemName, String date, int rating) {
-        performAction(itemName, date, 0);
+
+        performAction(itemName);
     }
 
     /**
      * Overloading method to only include searching title and date
      * @param itemName
-     * @param date
      */
-    public void performAction(String itemName, String date) {
+    public void performAction(String itemName) {
         for (Release release: global.getReleases()) {
-            boolean found = release.getDate().equals(date) && release.getTitle().equals(itemName);
+            boolean found = release.getTitle().toLowerCase().equals(itemName);
             if (found) {
                 personal.addRelease(release);
+                System.out.println("The release \"" + release.getTitle() + "\" has been added to your Library.");
+                if(personal.getArtists().contains(release.getArtist())){
+                    return;
+                }
+                else{
+                    personal.addArtist(release.getArtist());
+                    System.out.println("The release's artist \""+ release.getArtist().getName() +"\" has been added to your Library as well.");
+                }
+
                 return;
             }
         }
-
-        throw new IllegalArgumentException(String.format("%s doesn't exist in the library.", itemName));
+        System.out.println("The release you specified doesn't exist. Please check your spelling.");
     }
     
 }

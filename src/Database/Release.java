@@ -54,7 +54,9 @@ public class Release implements Comparable{
 
     public String getGUID() {return this.GUID;}
 
-    public Artist getArtist() {return this.getArtist();}
+    public Artist getArtist() {
+        return this.artist;
+    }
 
     public String getMedium() {return this.medium;}
 

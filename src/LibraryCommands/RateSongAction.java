@@ -17,24 +17,25 @@ public class RateSongAction implements LibraryAction {
 
     @Override
     public void performAction(String itemName, String date, int rating) {
-        performAction(itemName, "", rating);
+
+        performAction(itemName, rating);
     }
 
     /**
      * Overloading method to only include searching title, and adding song by item name
      * @param itemName
-     * @param date
      */
     public void performAction(String itemName, int rating) {
         List<Song> songs = personal.getSongs();
         for (int i = 0; i < songs.size(); i++) {
-            if (songs.get(i).getTitle().equals(itemName)) {
+            if (songs.get(i).getTitle().toLowerCase().equals(itemName)) {
                 songs.get(i).setUserRating(rating);
+                System.out.println(songs.get(i).getTitle() + " has received a rating of " + rating);
                 return;
             }
         }
 
-        throw new IllegalArgumentException(String.format("%s doesn't exist in the personal collection.", itemName));
+        System.out.println("The song you specified isn't in your library. Please add it to your library first if it exists.");
     }
     
 }

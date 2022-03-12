@@ -11,11 +11,11 @@ public class CommandLine {
         Library personal = new Library();
         Library global = new Library();
         try{
-            global.populateArtistData();
+            global.populateArtistData();            
             global.populateReleaseData();
             global.populateSongData();
         }catch (IOException e){
-            System.out.println("Cannot load Library");
+            System.out.println("Failed to load Library");
         }
 
         while (true){
