@@ -1,5 +1,6 @@
 package src.LibraryCommands;
 import src.Database.Library;
+import src.Database.Release;
 /**
  * The concrete command implementation for adding a 
  * release to a user's library.
@@ -17,7 +18,22 @@ public class AddReleaseAction implements LibraryAction {
 
     @Override
     public void performAction(String itemName, String date, int rating) {
-        
+        performAction(itemName, date, 0);
+    }
+
+    /**
+     * Overloading method to only include title and date
+     * @param itemName
+     * @param date
+     */
+    public void performAction(String itemName, String date) {
+        for (Release release: global.getReleases()) {
+            boolean found = release.getDate().equals(date) && release.getTitle().equals(itemName);
+            if (found) {
+                personal.addRelease(release);
+                break;
+            }
+        }
     }
     
 }
