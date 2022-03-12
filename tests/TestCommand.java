@@ -1,19 +1,16 @@
-package tests;
-
-
 import java.io.IOException;
 import java.util.ArrayList;
 
 
-import src.Database.Artist;
-import src.Database.Library;
-import src.Database.Release;
-import src.Database.Song;
-import src.LibraryCommands.AddReleaseAction;
-import src.LibraryCommands.AddSongAction;
-import src.LibraryCommands.RateSongAction;
-import src.LibraryCommands.RemoveReleaseAction;
-import src.LibraryCommands.RemoveSongAction;
+import Database.Artist;
+import Database.Library;
+import Database.Release;
+import Database.Song;
+import LibraryCommands.AddReleaseAction;
+import LibraryCommands.AddSongAction;
+import LibraryCommands.RateSongAction;
+import LibraryCommands.RemoveReleaseAction;
+import LibraryCommands.RemoveSongAction;
 
 public class TestCommand {
 
