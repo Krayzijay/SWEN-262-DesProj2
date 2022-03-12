@@ -1,6 +1,6 @@
-package src;
-import src.Database.Library;
-import src.SearchStrategys.*;
+
+import Database.Library;
+import SearchStrategys.*;
 
 public class SearchState implements State{
 

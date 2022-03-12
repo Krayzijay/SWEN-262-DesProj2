@@ -1,8 +1,8 @@
-package src.LibraryCommands;
+package LibraryCommands;
 import java.util.List;
 
-import src.Database.Library;
-import src.Database.Song;
+import Database.Library;
+import Database.Song;
 /**
  * The concrete command implementation for rating a song.
  * 

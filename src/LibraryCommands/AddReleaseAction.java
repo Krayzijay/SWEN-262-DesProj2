@@ -1,6 +1,6 @@
-package src.LibraryCommands;
-import src.Database.Library;
-import src.Database.Release;
+package LibraryCommands;
+import Database.Library;
+import Database.Release;
 /**
  * The concrete command implementation for adding a 
  * release to a user's library.

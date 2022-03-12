@@ -1,7 +1,7 @@
-package src;
+
 import java.io.*;
-import src.Database.*;
-import src.LibraryCommands.HelpAction;
+import Database.*;
+import LibraryCommands.HelpAction;
 
 public class CommandLine {
 

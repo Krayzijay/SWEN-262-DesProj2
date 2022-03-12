@@ -1,6 +1,6 @@
-package src;
-import src.Database.Library;
-import src.LibraryCommands.*;
+
+import Database.Library;
+import LibraryCommands.*;
 
 import java.util.Calendar;
 

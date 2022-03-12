@@ -1,5 +1,5 @@
-package src.SearchStrategys;
-import src.Database.Library;
+package SearchStrategys;
+import Database.Library;
 
 /**
  * The interface for outlining the strategy pattern
