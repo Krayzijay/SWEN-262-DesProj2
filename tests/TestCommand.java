@@ -31,15 +31,36 @@ public class TestCommand {
         Library global = new Library();
         Artist artist = new Artist("GUID", "artist");
         ArrayList<Song> songs = new ArrayList<>() {{add(new Song("GUID", artist, 1, "title"));}};
-
         Release expected = new Release("1234", artist, "a release", "medium", "01/01/2001", songs);
         global.addRelease(expected);
 
-        
-        //
+        // actual
         AddReleaseAction action = new AddReleaseAction(global, personal);
         action.performAction("a release", "01/01/2001");
 
+        // test
         assertEquals(expected, personal.getReleases().get(0), "Testing if the release has been added to the user's collection");
     }
+
+    /**
+     * Tests that a song has been added to the personal collection
+     * @throws IOException
+     */
+    @Test
+    public void testAddSongAction() throws IOException {
+        //setup
+        Library personal = new Library();
+        Library global = new Library();
+        Artist artist = new Artist("GUID", "artist");
+        Song song = new Song("GUID", artist, 1, "title");
+        global.addSong(song);
+
+        // actual
+        AddSongAction action = new AddSongAction(global, personal);
+        action.performAction("title");
+
+        // test
+        assertEquals(song, personal.getSongs().get(0), "Testing if the song has been added to the user's collection");
+    }
+
 }

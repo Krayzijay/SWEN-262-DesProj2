@@ -22,7 +22,7 @@ public class AddReleaseAction implements LibraryAction {
     }
 
     /**
-     * Overloading method to only include title and date
+     * Overloading method to only include searching title and date
      * @param itemName
      * @param date
      */
