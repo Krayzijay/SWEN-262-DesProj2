@@ -146,6 +146,18 @@ public class Library {
         return song;
     }
 
+    public void addSong(Song song) {
+        this.SongCollection.add(song);
+    }
+
+    public void addArtist(Artist artist) {
+        this.ArtistCollection.add(artist);
+    }
+    
+    public void addRelease(Release release) {
+        this.ReleaseCollection.add(release);
+    }
+
     public List<Artist> getArtists() {return this.ArtistCollection;}
     public List<Song> getSongs() {return this.SongCollection;}
     public List<Release> getReleases() {return this.ReleaseCollection;}
