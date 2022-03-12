@@ -23,13 +23,14 @@ public class RateSongAction implements LibraryAction {
     /**
      * Overloading method to only include searching title, and adding song by item name
      * @param itemName
-     * @param date
+     * @param rating
      */
     public void performAction(String itemName, int rating) {
         List<Song> songs = personal.getSongs();
         for (int i = 0; i < songs.size(); i++) {
             if (songs.get(i).getTitle().equals(itemName)) {
                 songs.get(i).setUserRating(rating);
+
                 return;
             }
         }
