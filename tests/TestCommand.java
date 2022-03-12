@@ -40,6 +40,6 @@ public class TestCommand {
         AddReleaseAction action = new AddReleaseAction(global, personal);
         action.performAction("a release", "01/01/2001");
 
-        assertEquals(expected, personal.getReleases().get(0));
+        assertEquals(expected, personal.getReleases().get(0), "Testing if the release has been added to the user's collection");
     }
 }
