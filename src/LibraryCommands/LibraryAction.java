@@ -6,8 +6,8 @@ import src.Database.Library;
  * The command interface for outlining implementations
  * of different system commands.
  * 
- * @author Bryson VerDow
+ * @author Bryson VerDow, Jackson Murphy
  */
 public interface LibraryAction {
-    public void performAction(Library global, Library personal, String itemName, String date, int rating);
+    public void performAction(String itemName, String date, int rating);
 }

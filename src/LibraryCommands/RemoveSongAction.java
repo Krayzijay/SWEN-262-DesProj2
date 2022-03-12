@@ -4,13 +4,19 @@ import src.Database.Library;
  * The concrete command implementation for removing
  * a song from a user's library.
  * 
- * @author Bryson VerDow
+ * @author Bryson VerDow, Jackson Murphy
  */
 public class RemoveSongAction implements LibraryAction {
-    private String oldSong;
+    private Library global;
+    private Library personal;
+
+    public RemoveSongAction(Library global, Library personal) {
+        this.global = global;
+        this.personal = personal;
+    }
 
     @Override
-    public void performAction(Library global, Library personal, String itemName, String date, int rating) {
+    public void performAction(String itemName, String date, int rating) {
         
     }
     
