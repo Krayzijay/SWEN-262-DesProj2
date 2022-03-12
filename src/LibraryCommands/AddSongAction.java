@@ -31,9 +31,11 @@ public class AddSongAction implements LibraryAction {
             boolean found = song.getTitle().equals(itemName);
             if (found) {
                 personal.addSong(song);
-                break;
+                return;
             }
         }
+
+        throw new IllegalArgumentException(String.format("%s doesn't exist in the library.", itemName));
     }
     
 }

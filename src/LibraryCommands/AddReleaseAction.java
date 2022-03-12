@@ -31,9 +31,11 @@ public class AddReleaseAction implements LibraryAction {
             boolean found = release.getDate().equals(date) && release.getTitle().equals(itemName);
             if (found) {
                 personal.addRelease(release);
-                break;
+                return;
             }
         }
+
+        throw new IllegalArgumentException(String.format("%s doesn't exist in the library.", itemName));
     }
     
 }
