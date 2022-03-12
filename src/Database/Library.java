@@ -158,6 +158,18 @@ public class Library {
         this.ReleaseCollection.add(release);
     }
 
+    public void removeRelease(Release release) {
+        this.ReleaseCollection.remove(release);
+    }
+
+    public void removeArtist(Artist artist) {
+        this.ArtistCollection.remove(artist);
+    }
+
+    public void removeSong(Song song) {
+        this.SongCollection.remove(song);
+    }
+
     public List<Artist> getArtists() {return this.ArtistCollection;}
     public List<Song> getSongs() {return this.SongCollection;}
     public List<Release> getReleases() {return this.ReleaseCollection;}
