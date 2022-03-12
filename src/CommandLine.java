@@ -14,7 +14,7 @@ public class CommandLine {
             global.populateReleaseData();
             global.populateSongData();
         }catch (IOException e){
-
+            System.out.println("Cannot load Library");
         }
 
         while (true){
