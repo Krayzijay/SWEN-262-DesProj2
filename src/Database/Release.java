@@ -53,6 +53,8 @@ public class Release {
 
     public String getGUID() {return this.GUID;}
 
+    public String getTitle() {return this.title;}
+
     public Artist getArtist() {return this.getArtist();}
 
     public String getMedium() {return this.medium;}
@@ -67,9 +69,7 @@ public class Release {
         return "Title: " + this.title + ", Artist: " + this.artist.getName() + ", " + this.medium + ", Issued: " + this.date;
     }
     
-    @Override
     public int compareTo(Release other) {
         return this.title.compareTo(other.getTitle());
     }
-    
 }

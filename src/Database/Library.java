@@ -86,6 +86,7 @@ public class Library {
 
             //add new Song to the SongCollection
             SongCollection.add(new Song(guid, matching_artist, duration, title));
+            matching_artist.songs.add(SongCollection.get(SongCollection.size() - 1));
         }
     }
 
@@ -132,6 +133,7 @@ public class Library {
             }
             //add new Release to the ReleaseCollection
             ReleaseCollection.add(new Release(guid, matching_artist, title, medium, date, tracks));  
+            matching_artist.releases.add(ReleaseCollection.get(ReleaseCollection.size() - 1));
         }
     }
 

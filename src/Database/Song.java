@@ -25,30 +25,15 @@ public class Song {
 
     public String getGUID() {return this.GUID;}
 
-    public Artist getArtist() {
-        return this.artist;
-    }
-
-    public float getUserRating() {
-        return userRating;
-    }
-
-    public void setUserRating(float userRating) {
-        this.userRating = userRating;
-    }
-
     public String getTitle() {return this.title;}
+
+    public Artist getArtist() {return this.artist;}
 
     public int getDuration() {return this.duration;}
 
     public float getRating() {return this.userRating;}
     
     public String toString() {
-        return "Title: " + this.title + ", Artist: " + this.artist.getName() + 
-        ", Duration: " + this.duration;
-    }
-    @Override
-    public int compareTo(Song other) {
-        return this.title.compareTo(other.getTitle());
+        return "Title: " + this.title + ", Artist: " + this.artist.getName() + ", Duration: " + this.duration;
     }
 }
