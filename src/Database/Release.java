@@ -65,11 +65,7 @@ public class Release implements Comparable{
     public List<Song> getTracks() {return this.tracks;}
 
     public float getRating() {return this.avgRating;}
-
-    public String getTitle() {
-        return title;
-    }
-
+    
     public String toString() {
         return "Title: " + this.title + ", Artist: " + this.artist.getName() + ", " + this.medium + ", Issued: " + this.date;
     }
