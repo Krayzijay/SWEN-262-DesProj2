@@ -1,4 +1,4 @@
-package src.Database;
+package Database;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,6 @@ public class Release {
     String date = null;
     String medium = null;
     List<Song> tracks = new ArrayList<>();
-    float userRating = 0;
     float avgRating = 0;
 
     public Release(String GUID, Artist artist, String title,String medium, String date, List<Song> tracks) {
@@ -27,8 +26,29 @@ public class Release {
         this.tracks = tracks;
     }
 
-    public String getTitle() {
-        return title;
+    //Returns the combined duration for each song in the release
+    public int getDurationforRelease() {
+        int duration = 0;
+        for(Song song : this.getTracks()) {
+            duration += song.getDuration();
+        }
+
+        return duration;
+    }
+
+    //Calculates the average rating for the release
+    public void calculateRating() {
+        float rating = 0;
+        int size = 0;
+
+        for(Song song : this.getTracks()) {
+            rating += song.getRating();
+
+            if(song.getRating() != 0)
+                size++;
+        }
+        
+        this.avgRating = rating/size;
     }
 
     public String getGUID() {return this.GUID;}
@@ -40,6 +60,8 @@ public class Release {
     public String getDate() {return this.date;}
 
     public List<Song> getTracks() {return this.tracks;}
+
+    public float getRating() {return this.avgRating;}
 
     public String toString() {
         return "Title: " + this.title + ", Artist: " + this.artist.getName() + ", " + this.medium + ", Issued: " + this.date;

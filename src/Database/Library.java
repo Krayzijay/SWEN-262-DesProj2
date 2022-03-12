@@ -1,4 +1,4 @@
-package src.Database;
+package Database;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -130,7 +130,6 @@ public class Library {
                     tracks.add(songToTrack(record.get(j)));
                 }
             }
-
             //add new Release to the ReleaseCollection
             ReleaseCollection.add(new Release(guid, matching_artist, title, medium, date, tracks));  
         }
@@ -170,6 +169,7 @@ public class Library {
         this.SongCollection.remove(song);
     }
 
+    
     public List<Artist> getArtists() {return this.ArtistCollection;}
     public List<Song> getSongs() {return this.SongCollection;}
     public List<Release> getReleases() {return this.ReleaseCollection;}
