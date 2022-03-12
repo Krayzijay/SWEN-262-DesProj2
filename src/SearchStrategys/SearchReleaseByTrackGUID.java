@@ -1,6 +1,7 @@
 package src.SearchStrategys;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import src.Database.Release;
@@ -27,7 +28,7 @@ public class SearchReleaseByTrackGUID implements SearchStrategy {
                 }
             }
         }
-        result.sort();
+        Collections.sort(result);
         System.out.println(result);
     }
     

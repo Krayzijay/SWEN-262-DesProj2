@@ -1,6 +1,7 @@
 package src.SearchStrategys;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import src.Database.Artist;
@@ -23,7 +24,7 @@ public class SearchArtistByType implements SearchStrategy {
                 result.add(artist);
             }
         }
-        result.sort();
+        Collections.sort(result);
         System.out.println(result);
     }
     

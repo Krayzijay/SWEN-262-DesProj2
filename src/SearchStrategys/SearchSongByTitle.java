@@ -1,6 +1,7 @@
 package src.SearchStrategys;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import src.Database.Song;
@@ -23,7 +24,7 @@ public class SearchSongByTitle implements SearchStrategy {
                 result.add(song);
             }
         }
-        result.sort();
+        Collections.sort(result);
         System.out.println(result);
     }
     

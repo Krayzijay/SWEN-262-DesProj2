@@ -63,4 +63,9 @@ public class Artist {
         else
             return "Name: " + this.name;
     }
+
+    @Override
+    public int compareTo(Artist other) {
+        return this.name.compareTo(other.getName());
+    }
 }

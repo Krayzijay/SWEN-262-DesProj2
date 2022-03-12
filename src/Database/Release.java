@@ -44,4 +44,10 @@ public class Release {
     public String toString() {
         return "Title: " + this.title + ", Artist: " + this.artist.getName() + ", " + this.medium + ", Issued: " + this.date;
     }
+    
+    @Override
+    public int compareTo(Release other) {
+        return this.title.compareTo(other.getTitle());
+    }
+    
 }

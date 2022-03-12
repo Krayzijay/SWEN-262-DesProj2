@@ -1,0 +1,12 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\Owner\\postgresql-42.3.3.jar",
+        "c:\\Users\\Owner\\junit-platform-console-standalone-1.7.0-all.jar"
+    ],
+    "java.project.sourcePaths": [
+        "src",
+        "csv",
+        ""
+    ]
+}

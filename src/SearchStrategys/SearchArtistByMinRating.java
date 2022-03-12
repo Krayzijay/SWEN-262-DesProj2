@@ -1,6 +1,7 @@
 package src.SearchStrategys;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import src.Database.Artist;
@@ -18,10 +19,13 @@ public class SearchArtistByMinRating implements SearchStrategy {
     public void search(Library lib, String specification) {
         List<Artist> result = new ArrayList<>();
         List<Artist> artists = lib.getArtists();
+        int minRating = Integer.parseInt(specification);
         for(Artist artist : artists) {
-            
+            if(artist.getRating() > minRating) {
+                result.add(artist);
+            }
         }
-        result.sort();
+        Collections.sort(result);
         System.out.println(result);
     }
     

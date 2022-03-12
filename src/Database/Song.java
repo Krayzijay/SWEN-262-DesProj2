@@ -55,4 +55,8 @@ public class Song {
     public String toString() {
         return "Title: " + this.title + ", Artist: " + this.artist.getName() + ", Duration: " + this.duration;
     }
+    @Override
+    public int compareTo(Song other) {
+        return this.title.compareTo(other.getTitle());
+    }
 }
