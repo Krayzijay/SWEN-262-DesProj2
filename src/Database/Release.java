@@ -2,13 +2,14 @@ package Database;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A class which represents a Release
  * 
  * @author Michael Ambrose
  */
-public class Release {
+public class Release implements Comparable{
     String GUID = null;
     String title = null;
     Artist artist = null;
@@ -27,7 +28,7 @@ public class Release {
     }
 
     //Returns the combined duration for each song in the release
-    public int getDurationforRelease() {
+    public int getDuration() {
         int duration = 0;
         for(Song song : this.getTracks()) {
             duration += song.getDuration();
@@ -63,13 +64,17 @@ public class Release {
 
     public float getRating() {return this.avgRating;}
 
+    public String getTitle() {
+        return title;
+    }
+
     public String toString() {
         return "Title: " + this.title + ", Artist: " + this.artist.getName() + ", " + this.medium + ", Issued: " + this.date;
     }
-    
+
     @Override
-    public int compareTo(Release other) {
-        return this.title.compareTo(other.getTitle());
+    public int compareTo(Object o) {
+        Release r = (Release)o;
+        return this.title.compareTo(r.getTitle());
     }
-    
 }

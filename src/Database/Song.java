@@ -5,7 +5,7 @@ package Database;
  * 
  * @author Michael Ambrose
  */
-public class Song {
+public class Song implements Comparable{
     String GUID = null;
     String title = null;
     Artist artist = null;
@@ -48,7 +48,8 @@ public class Song {
         ", Duration: " + this.duration;
     }
     @Override
-    public int compareTo(Song other) {
-        return this.title.compareTo(other.getTitle());
+    public int compareTo(Object o) {
+        Song r = (Song)o;
+        return this.title.compareTo(r.getTitle());
     }
 }

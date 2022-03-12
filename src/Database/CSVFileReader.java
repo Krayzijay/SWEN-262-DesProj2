@@ -1,4 +1,4 @@
-package parser;
+package Database;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.List;
  * @author Michael Ambrose
  */
 
-public class Reader {
+public class CSVFileReader {
 
     // Reads a given csv file and returns a List<List<String>> with the contained information
     public static List<List<String>> csvReader(String filename) throws IOException {

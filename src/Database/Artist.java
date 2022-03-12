@@ -8,7 +8,7 @@ import java.util.List;
  * 
  * @author Michael Ambrose
  */
-public class Artist {
+public class Artist implements Comparable{
     String GUID = null;
     String name = null;
     String type = null;
@@ -79,7 +79,8 @@ public class Artist {
     }
 
     @Override
-    public int compareTo(Artist other) {
-        return this.name.compareTo(other.getName());
+    public int compareTo(Object o) {
+        Artist r = (Artist)o;
+        return this.name.compareTo(r.getName());
     }
 }

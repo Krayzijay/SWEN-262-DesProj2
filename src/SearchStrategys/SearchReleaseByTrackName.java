@@ -23,7 +23,7 @@ public class SearchReleaseByTrackName implements SearchStrategy {
         for(Release release : releases) {
             List<Song> songs = release.getTracks();
             for(Song song : songs) {
-                if(song.getName().toLowerCase().contains(specification.toLowerCase())) {
+                if(song.getTitle().toLowerCase().contains(specification.toLowerCase())) {
                     result.add(release);
                 }
             }

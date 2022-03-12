@@ -21,32 +21,34 @@ public class SearchState implements State{
             whichLibrary = 1;
             if(item.equals("artist")){
                 if(searchBy.equals("byname")){
-                    g.setStrategy(new SearchDatabaseArtistByName());
+                    g.setStrategy(new SearchArtistByName());
                 }
             }else if(item.equals("song")){
                 if(searchBy.equals("byname") || searchBy.equals("bytitle")){
-                    g.setStrategy(new SearchDatabaseSongByTitle());
+                    g.setStrategy(new SearchSongByTitle());
                 }else if(searchBy.equals("bymaxduration")){
-                    g.setStrategy(new SearchDatabaseSongByMaxDuration());
+                    g.setStrategy(new SearchSongByMaxDuration());
                 }else if(searchBy.equals("byminduration")){
-                    g.setStrategy(new SearchDatabaseSongByMinDuration());
-                }else if(searchBy.equals("byartist")){
-                    g.setStrategy(new SearchDatabaseSongByArtist());
+                    g.setStrategy(new SearchSongByMinDuration());
+                }else if(searchBy.equals("byartistguid")){
+                    p.setStrategy(new SearchSongByArtistGUID());
+                }else if(searchBy.equals("byartistname")){
+                    p.setStrategy(new SearchSongByArtistName());
                 }
 
             }else if(item.equals("release")){
                 if(searchBy.equals("byartistname")){
-                    g.setStrategy(new SearchDatabaseReleaseByArtistName());
+                    g.setStrategy(new SearchReleaseByArtistName());
                 }else if(searchBy.equals("byartistguid")){
-                    g.setStrategy(new SearchDatabaseReleaseByArtistGUID());
+                    g.setStrategy(new SearchReleaseByArtistGUID());
                 }else if(searchBy.equals("bydaterange")){
-                    g.setStrategy(new SearchDatabaseReleaseByDateRange());
+                    g.setStrategy(new SearchReleaseByDateRange());
                 }else if(searchBy.equals("bytitle")){
-                    g.setStrategy(new SearchDatabaseReleaseByTitle());
+                    g.setStrategy(new SearchReleaseByTitle());
                 }else if(searchBy.equals("bytrackguid")){
-                    g.setStrategy(new SearchDatabaseReleaseByTrackGUID());
+                    g.setStrategy(new SearchReleaseByTrackGUID());
                 }else if(searchBy.equals("bytrackname")){
-                    g.setStrategy(new SearchDatabaseReleaseByTrackName());
+                    g.setStrategy(new SearchReleaseByTrackName());
                 }
             }
 
@@ -54,49 +56,49 @@ public class SearchState implements State{
             whichLibrary = 2;
             if(item.equals("artist")){
                 if(searchBy.equals("byminrating")){
-                    p.setStrategy(new SearchLibraryArtistByMinRating());
+                    p.setStrategy(new SearchArtistByMinRating());
                 }else if(searchBy.equals("byname")){
-                    p.setStrategy(new SearchLibraryArtistByName());
+                    p.setStrategy(new SearchArtistByName());
                 }else if(searchBy.equals("bytype")){
-                    p.setStrategy(new SearchLibraryArtistByType());
+                    p.setStrategy(new SearchArtistByType());
                 }
 
             }else if(item.equals("song")){
                 if(searchBy.equals("byartistguid")){
-                    p.setStrategy(new SearchLibrarySongByArtistGUID());
+                    p.setStrategy(new SearchSongByArtistGUID());
                 }else if(searchBy.equals("byartistname")){
-                    p.setStrategy(new SearchLibrarySongByArtistName());
+                    p.setStrategy(new SearchSongByArtistName());
                 }else if(searchBy.equals("bymaxduration")){
-                    p.setStrategy(new SearchLibrarySongByMaxDuration());
+                    p.setStrategy(new SearchSongByMaxDuration());
                 }else if(searchBy.equals("byminduration")){
-                    p.setStrategy(new SearchLibrarySongByMinDuration());
+                    p.setStrategy(new SearchSongByMinDuration());
                 }else if(searchBy.equals("byminrating")){
-                    p.setStrategy(new SearchLibrarySongByMinRating());
+                    p.setStrategy(new SearchSongByMinRating());
                 }else if(searchBy.equals("byreleaseguid")){
-                    p.setStrategy(new SearchLibrarySongByReleaseGUID());
+                    p.setStrategy(new SearchSongByReleaseGUID());
                 }else if(searchBy.equals("byreleasetitle")){
-                    p.setStrategy(new SearchLibrarySongByReleaseTitle());
+                    p.setStrategy(new SearchSongByReleaseTitle());
                 }else if(searchBy.equals("bytitle")){
-                    p.setStrategy(new SearchLibrarySongByTitle());
+                    p.setStrategy(new SearchSongByTitle());
                 }
 
             }else if(item.equals("release")){
                 if(searchBy.equals("byartistguid")){
-                    p.setStrategy(new SearchLibraryReleaseByArtistGUID());
+                    p.setStrategy(new SearchReleaseByArtistGUID());
                 }else if(searchBy.equals("byartistname")){
-                    p.setStrategy(new SearchLibraryReleaseByArtistName());
+                    p.setStrategy(new SearchReleaseByArtistName());
                 }else if(searchBy.equals("bymaxduration")){
-                    p.setStrategy(new SearchLibraryReleaseByMaxDuration());
+                    p.setStrategy(new SearchReleaseByMaxDuration());
                 }else if(searchBy.equals("byminduration")){
-                    p.setStrategy(new SearchLibraryReleaseByMinDuration());
+                    p.setStrategy(new SearchReleaseByMinDuration());
                 }else if(searchBy.equals("byminrating")){
-                    p.setStrategy(new SearchLibraryReleaseByMinRating());
+                    p.setStrategy(new SearchReleaseByMinRating());
                 }else if(searchBy.equals("bytitle")){
-                    p.setStrategy(new SearchLibraryReleaseByTitle());
+                    p.setStrategy(new SearchReleaseByTitle());
                 }else if(searchBy.equals("bytrackguid")){
-                    p.setStrategy(new SearchLibraryReleaseByTrackGUID());
+                    p.setStrategy(new SearchReleaseByTrackGUID());
                 }else if(searchBy.equals("bytrackname")){
-                    p.setStrategy(new SearchLibraryReleaseByTrackName());
+                    p.setStrategy(new SearchReleaseByTrackName());
                 }
 
             }
