@@ -36,8 +36,6 @@ public class CommandLine {
             if(tokens2[0].equals("help")) {
                 HelpAction help = new HelpAction();
                 help.performAction();
-            }else if (tokens2[0].equals("exit")){
-                break;
             }else if(tokens2[0].equals("edit")){
                 currentState = new EditState();
                 currentState.execute(global, personal, tokens);
@@ -48,6 +46,7 @@ public class CommandLine {
                 currentState = new SearchState();
                 currentState.execute(global, personal, tokens);
             }else if (tokens2[0].equals("exit")){
+                System.out.println("Goodbye.");
                 break;
             }
             else{
