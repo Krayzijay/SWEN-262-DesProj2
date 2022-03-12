@@ -1,6 +1,4 @@
-package src;
-
-import src.Database.*;
+import Database.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;

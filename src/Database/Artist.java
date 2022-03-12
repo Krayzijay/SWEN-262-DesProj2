@@ -8,10 +8,10 @@ import java.util.List;
  * 
  * @author Michael Ambrose
  */
-public class Artist {
-    private String GUID = null;
-    private String name = null;
-    private String type = null;
+public class Artist implements Comparable{
+    String GUID = null;
+    String name = null;
+    String type = null;
     float avgRating;
     List<Song> songs;
     List<Release> releases;
@@ -78,7 +78,9 @@ public class Artist {
             return "Name: " + this.name;
     }
 
-    public int compareTo(Artist other) {
-        return this.name.compareTo(other.getName());
+    @Override
+    public int compareTo(Object o) {
+        Artist r = (Artist)o;
+        return this.name.compareTo(r.getName());
     }
 }

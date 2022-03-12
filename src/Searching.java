@@ -1,6 +1,6 @@
-package src;
-import src.Database.*;
-import src.SearchStrategys.SearchStrategy;
+
+import Database.*;
+import SearchStrategys.SearchStrategy;
 
 import java.util.List;
 

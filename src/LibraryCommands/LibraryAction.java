@@ -1,6 +1,5 @@
-package src.LibraryCommands;
+package LibraryCommands;
 
-import src.Database.Library;
 
 /**
  * The command interface for outlining implementations

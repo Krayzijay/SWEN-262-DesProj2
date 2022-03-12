@@ -1,5 +1,4 @@
-package src.LibraryCommands;
-import src.Database.Library;
+package LibraryCommands;
 /**
  * The concrete command implementation for performing
  * the help command.

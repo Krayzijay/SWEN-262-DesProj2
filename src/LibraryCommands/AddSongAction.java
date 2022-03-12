@@ -1,6 +1,6 @@
-package src.LibraryCommands;
-import src.Database.Library;
-import src.Database.Song;
+package LibraryCommands;
+import Database.Library;
+import Database.Song;
 /**
  * The concrete command implementation for adding a 
  * song to a user's library.

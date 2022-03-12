@@ -1,11 +1,11 @@
-package src.SearchStrategys;
+package SearchStrategys;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import src.Database.Release;
-import src.Database.Library;
+import Database.Release;
+import Database.Library;
 
 /**
  * The concrete implementation for searching the given

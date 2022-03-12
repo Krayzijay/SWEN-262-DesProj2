@@ -5,11 +5,11 @@ package Database;
  * 
  * @author Michael Ambrose
  */
-public class Song {
-    private String GUID = null;
-    private String title = null;
-    private Artist artist = null;
-    private int duration = 0;
+public class Song implements Comparable{
+    String GUID = null;
+    String title = null;
+    Artist artist = null;
+    int duration = 0;
     float userRating;
     
     //Constructor
@@ -34,6 +34,12 @@ public class Song {
     public float getRating() {return this.userRating;}
     
     public String toString() {
-        return "Title: " + this.title + ", Artist: " + this.artist.getName() + ", Duration: " + this.duration;
+        return "Title: " + this.title + ", Artist: " + this.artist.getName() + 
+        ", Duration: " + this.duration;
+    }
+    @Override
+    public int compareTo(Object o) {
+        Song r = (Song)o;
+        return this.title.compareTo(r.getTitle());
     }
 }

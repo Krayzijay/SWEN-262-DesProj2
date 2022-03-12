@@ -1,12 +1,12 @@
-package src.SearchStrategys;
+package SearchStrategys;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import src.Database.Release;
-import src.Database.Song;
-import src.Database.Library;
+import Database.Release;
+import Database.Song;
+import Database.Library;
 
 /**
  * The concrete implementation for searching the given
@@ -23,7 +23,7 @@ public class SearchReleaseByTrackName implements SearchStrategy {
         for(Release release : releases) {
             List<Song> songs = release.getTracks();
             for(Song song : songs) {
-                if(song.getName().toLowerCase().contains(specification.toLowerCase())) {
+                if(song.getTitle().toLowerCase().contains(specification.toLowerCase())) {
                     result.add(release);
                 }
             }
