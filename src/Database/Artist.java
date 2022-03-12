@@ -67,6 +67,10 @@ public class Artist {
 
     public float getRating() {return this.avgRating;}
 
+    public List<Song> getSongs() {return this.songs;}
+    
+    public List<Release> getReleases() {return this.releases;}
+
     public String toString() {
         if(this.type != null)
             return "Name: " + this.name + ", Type: " + this.type;
