@@ -19,8 +19,9 @@ public class CommandLine {
         }
 
         while (true){
-            System.out.println("Please enter your request followed by any necessary parameters." +
-                    "You can also enter \'Help\' to be shown a list of possible requests.");
+            System.out.println("Please enter your request followed by any necessary parameters.\n" +
+                    "You can also enter \'Help\' to be shown a list of possible requests.\n" +
+                    "Enter \'Exit\' to end the application.");
 
             String input = "";
             try{
@@ -35,6 +36,8 @@ public class CommandLine {
             if(tokens2[0].equals("help")) {
                 HelpAction help = new HelpAction();
                 help.performAction();
+            }else if (tokens2[0].equals("exit")){
+                break;
             }else if(tokens2[0].equals("edit")){
                 currentState = new EditState();
                 currentState.execute(global, personal, tokens);

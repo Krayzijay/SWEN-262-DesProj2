@@ -32,7 +32,7 @@ public class Library {
     public synchronized void populateArtistData() throws IOException {
         //parses the csv file
 
-        data = reader.csvReader("data/artists.csv");
+        data = reader.csvReader("src/data/artists.csv");
 
         for(int i = 0; i < data.size(); i++) {
             //if the size of the record = 2 (the artist has no type)
@@ -49,7 +49,7 @@ public class Library {
     //Populates the SongCollection with songs
     public synchronized void populateSongData() throws IOException {
         //parses the csv file
-        data = CSVFileReader.csvReader("data/songs.csv");
+        data = CSVFileReader.csvReader("src/data/songs.csv");
 
         //variables that relate to data in each record
         String guid = null;
@@ -96,7 +96,7 @@ public class Library {
     //Populates the ReleaseCollection with releases
     public synchronized void populateReleaseData() throws IOException {
         //parses the csv file
-        data = CSVFileReader.csvReader("data/releases.csv");
+        data = CSVFileReader.csvReader("src/data/releases.csv");
 
         //variables that relate to data in each record
         String guid = null;
