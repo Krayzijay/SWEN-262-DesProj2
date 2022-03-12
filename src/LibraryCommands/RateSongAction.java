@@ -9,11 +9,9 @@ import src.Database.Song;
  * @author Bryson VerDow, Jackson Murphy
  */
 public class RateSongAction implements LibraryAction {
-    private Library global;
     private Library personal;
 
-    public RateSongAction(Library global, Library personal) {
-        this.global = global;
+    public RateSongAction(Library personal) {
         this.personal = personal;
     }
 

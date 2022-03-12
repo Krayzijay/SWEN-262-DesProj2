@@ -8,11 +8,9 @@ import src.Database.Song;
  * @author Bryson VerDow, Jackson Murphy
  */
 public class RemoveSongAction implements LibraryAction {
-    private Library global;
     private Library personal;
 
-    public RemoveSongAction(Library global, Library personal) {
-        this.global = global;
+    public RemoveSongAction(Library personal) {
         this.personal = personal;
     }
 

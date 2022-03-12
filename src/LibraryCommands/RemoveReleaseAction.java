@@ -8,11 +8,9 @@ import src.Database.Release;
  * @author Bryson VerDow, Jackson Murphy
  */
 public class RemoveReleaseAction implements LibraryAction {
-    private Library global;
     private Library personal;
 
-    public RemoveReleaseAction(Library global, Library personal) {
-        this.global = global;
+    public RemoveReleaseAction(Library personal) {
         this.personal = personal;
     }
 
