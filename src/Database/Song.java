@@ -44,8 +44,8 @@ public class Song implements Comparable{
     public float getRating() {return this.userRating;}
     
     public String toString() {
-        return "Title: " + this.title + ", Artist: " + this.artist.getName() + 
-        ", Duration: " + this.duration;
+        return "Song Title: " + this.title + ", Artist: " + this.artist.getName() +
+        ", Duration: " + this.duration + " milliseconds";
     }
     @Override
     public int compareTo(Object o) {
