@@ -151,9 +151,9 @@ public class Library {
         }
 
         for(Artist a : this.getArtists()){
-            for(Release s : this.getReleases()){
-                if(s.getArtist().equals(a)){
-                    a.addRelease(s);
+            for(Release r : this.getReleases()){
+                if(r.getArtist().equals(a)){
+                    a.addRelease(r);
                 }
             }
         }
