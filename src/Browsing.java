@@ -9,12 +9,12 @@ import java.util.List;
 
 public class Browsing{
 
-    public static void browse(Library db){
+    public static void browse(Library personal){
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
         while(true){
             //prints all artists
             System.out.println("List of Artists:");
-            printAllArtists(db.getArtists());
+            printAllArtists(personal.getArtists());
 
             //user chooses an artist
             System.out.println("Please enter a Artist's name or \'Back\' to go back.:");
@@ -23,30 +23,28 @@ public class Browsing{
                 input = buffer.readLine();
             } catch (IOException e){}
 
-            //checks if artist is in library
-            Artist b = null;
-            for (Artist a : db.getArtists() ){
-                if(a.getName().toLowerCase().equals(input.toLowerCase())){
-                    b = a;
-                    break;
-                }
-            }
-
-            //if artist wants to leave, end loop
+            //if user wants to leave, end loop
             if (input.toLowerCase().equals("back")){
                 break;
             }
 
-            //if artist selects an artist
-            else if (b != null){
+            //checks if artist is in library
+            Artist artist = null;
+            for (Artist a : personal.getArtists() ){
+                if(a.getName().toLowerCase().equals(input.toLowerCase())){
+                    artist = a;
+                    break;
+                }
+            }
+
+            //if artist selects an artist and the artist is in the library
+            if (artist != null){
                 while(true){
                     //print single songs and releases
-                    //needs toString in Artist class to get rid of error below
-                    printArtistInfo(b);
-
+                    printArtistInfo(artist, personal);
                     System.out.println("Please enter a Release Title or \'Back\' to go back.:");
                     try{
-                        input = buffer.readLine();
+                        input = buffer.readLine().toLowerCase();
                     } catch (IOException e){}
 
                     //backs out to list of artists
@@ -54,77 +52,78 @@ public class Browsing{
                         break;
                     }else{
                         //print release info
-                        printRelease(db.getReleases(), input);
+                        printRelease(personal.getReleases(), artist, input);
                     }
+
+                    System.out.println("Enter \"Back\" when you want to go back to the list of songs and releases.");
+                    String exit = "";
+                    while (true) {
+                        try {
+                            exit = buffer.readLine().toLowerCase();
+                            if (exit.equals("back")) {
+                                break;
+                            }
+                        } catch (IOException e) {
+                        }
+                    }
+
                 }
 
+            }else{
+                System.out.println("The artist you chose does not exist in your library.");
             }
-
-
         }
-
-        /**
-         * The user may choose one artist to explore.
-         *
-         * Individual songs (not part of a full release) will be displayed including title, duration, and rating.
-         *
-         * Releases will be displayed including title, date, media, average rating, total duration of all tracks.
-         *
-         * The user may choose to explore a release.
-         *
-         * Individual songs (part of the release) will be displayed including title, duration, and rating.
-         *
-         * The user may choose to back out to the artist.
-         * The user may choose to back out to the list of artists.
-         */
-
 
     }
     public static void printAllArtists(List<Artist> list ){
         for (Artist a : list ){
-            System.out.println(a);
+            System.out.print("Artist's Name: " + a.getName() + ", Disambiguation: " + a.getType() +
+                    ", Total Duration: " + a.getDuration());
+            System.out.println(" milliseconds");
         }
     }
 
-    public static void printRelease(List<Release> releases, String name){
-        Release r = null;
-        for (Release i : releases ){
-            if(i.getTitle().toLowerCase().equals(name)){
-                r = i;
+    public static void printRelease(List<Release> releases, Artist artist, String name){
+
+        for(Release r : releases){
+            if(r.getArtist().equals(artist) && r.getTitle().toLowerCase().equals(name)){
+                System.out.println("List of songs in \"" + r.getTitle() +"\":");
+                for(Song song : r.getTracks()){
+                    System.out.println("Song Title: "+ song.getTitle() + ", Duration:" + song.getDuration() + ", Rating: "+ song.getRating());
+                }
                 break;
             }
         }
-        System.out.println(r);
+        System.out.println("Couldn't find that release. Please check your spelling.");
     }
 
-    public static void printArtistInfo(Artist chosen){
+    public static void printArtistInfo(Artist chosenArtist, Library personal){
 
-        //gets the artists songs and releases
-        List<Song> allSongs = chosen.getSongs();
-        List<Release> allReleases = chosen.getReleases();
-
-        //list of songs belonging to the artist that arent part of a release
-        List<Song> singleSongs = new ArrayList(allSongs.size());
-
-        //finds which songs are not part of a release
-        for(Song s : allSongs){
-            for(Release r : allReleases){
-                List<Song> songs = r.getTracks();
-                if((songs.contains(s))){
-                    //do nothing
+        //prints all single songs then all releases
+        System.out.println("Songs In Personal Library:");
+        for(Song song : personal.getSongs()){
+            int check = 0;
+            if(song.getArtist().equals(chosenArtist)){
+                check = 1;
+                for(Release r : personal.getReleases()){
+                    if(r.getTracks().contains(song)){
+                        check = 2;
+                        break;
+                    }
                 }
-                else{
-                    singleSongs.add(s);
+                if(check == 1){
+                    System.out.println("Song Name: "+ song + ", Duration:" + song.getDuration() + ", Rating: "+ song.getRating());
                 }
             }
         }
 
-        //prints all single songs then all releases
-        for(Song song : singleSongs){
-            System.out.println(song);
-        }
-        for(Release release : allReleases){
-            System.out.println(release);
+        System.out.println("Releases In Personal Library:");
+        //title, date, media, average rating, total duration of all tracks
+        for(Release r : personal.getReleases()){
+            if(r.getArtist().equals(chosenArtist)){
+                System.out.println("Release Title: "+ r.getTitle() +", Date: "+ r.getDate() +", Media: "+ r.getMedium() +
+                        ", Average Rating: "+ r.getRating() +", Total Duration: " + r.getDuration());
+            }
         }
     }
 

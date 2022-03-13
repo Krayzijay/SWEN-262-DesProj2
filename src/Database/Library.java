@@ -32,7 +32,7 @@ public class Library {
     public synchronized void populateArtistData() throws IOException {
         //parses the csv file
 
-        data = reader.csvReader("src/data/artists.csv");
+        data = reader.csvReader("data/artists.csv");
 
         for(int i = 0; i < data.size(); i++) {
             //if the size of the record = 2 (the artist has no type)
@@ -49,7 +49,7 @@ public class Library {
     //Populates the SongCollection with songs
     public synchronized void populateSongData() throws IOException {
         //parses the csv file
-        data = CSVFileReader.csvReader("src/data/songs.csv");
+        data = CSVFileReader.csvReader("data/songs.csv");
 
         //variables that relate to data in each record
         String guid = null;
@@ -97,7 +97,7 @@ public class Library {
     //Populates the ReleaseCollection with releases
     public synchronized void populateReleaseData() throws IOException {
         //parses the csv file
-        data = CSVFileReader.csvReader("src/data/releases.csv");
+        data = CSVFileReader.csvReader("data/releases.csv");
 
         //variables that relate to data in each record
         String guid = null;
@@ -140,6 +140,25 @@ public class Library {
             matching_artist.releases.add(ReleaseCollection.get(ReleaseCollection.size() - 1));
         }
     }
+
+    public synchronized void populateArtistsLists(){
+        for(Artist a : this.getArtists()){
+            for(Song s : this.getSongs()){
+                if(s.getArtist().getName().equals(a.getName())){
+                    a.addSong(s);
+                }
+            }
+        }
+
+        for(Artist a : this.getArtists()){
+            for(Release s : this.getReleases()){
+                if(s.getArtist().equals(a)){
+                    a.addRelease(s);
+                }
+            }
+        }
+    }
+
 
     //Given a guid, search SongCollection for the matching song with the same guid
     public Song songToTrack(String id) {

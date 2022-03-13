@@ -2,7 +2,6 @@ package Database;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * A class which represents a Release
@@ -48,15 +47,18 @@ public class Release implements Comparable{
             if(song.getRating() != 0)
                 size++;
         }
-        
-        this.avgRating = rating/size;
+        if(size == 0){
+            this.avgRating = 0;
+        }else{
+            this.avgRating = rating/size;
+        }
     }
 
     public String getGUID() {return this.GUID;}
 
-    public String getTitle() {return this.title;}
-
-    public Artist getArtist() {return this.getArtist();}
+    public Artist getArtist() {
+        return this.artist;
+    }
 
     public String getMedium() {return this.medium;}
 
@@ -64,10 +66,17 @@ public class Release implements Comparable{
 
     public List<Song> getTracks() {return this.tracks;}
 
-    public float getRating() {return this.avgRating;}
-    
+    public float getRating() {
+        calculateRating();
+        return this.avgRating;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
     public String toString() {
-        return "Title: " + this.title + ", Artist: " + this.artist.getName() + ", " + this.medium + ", Issued: " + this.date;
+        return "Release Title: " + this.title + ", Artist: " + this.artist.getName() + ", " + this.medium + ", Issued: " + this.date;
     }
 
     @Override

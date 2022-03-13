@@ -2,6 +2,7 @@ package Database;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A class which represents an Artist
@@ -40,7 +41,7 @@ public class Artist implements Comparable{
         return this.GUID.equals(id);
     }
 
-    public void calculateRating() {
+    public void calculateAvgRating() {
         float rating = 0;
         int size = 0;
         
@@ -52,6 +53,21 @@ public class Artist implements Comparable{
         }
 
         this.avgRating = rating/size;
+    }
+
+    public int getDuration(){
+        int duration = 0;
+        for(Song s : this.songs){
+            duration += s.getDuration();
+        }
+        return duration;
+    }
+    public void addSong(Song s){
+        this.songs.add(s);
+    }
+
+    public void addRelease(Release r){
+        this.releases.add(r);
     }
 
     public String getGUID() {return this.GUID;}
@@ -82,5 +98,18 @@ public class Artist implements Comparable{
     public int compareTo(Object o) {
         Artist r = (Artist)o;
         return this.name.compareTo(r.getName());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artist artist = (Artist) o;
+        return name.equals(artist.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(GUID, name);
     }
 }

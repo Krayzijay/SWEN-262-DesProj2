@@ -28,8 +28,8 @@ public class TestCommand {
         global.addRelease(expected);
 
         // actual
-        AddReleaseAction action = new AddReleaseAction(global, personal);
-        action.performAction("a release", "01/01/2001");
+        AddReleaseAction action = new AddReleaseAction(global, personal);//
+//        action.performAction("a release", "01/01/2001");
 
         // test
     }
@@ -48,7 +48,7 @@ public class TestCommand {
 
         // actual
         AddSongAction action = new AddSongAction(global, personal);
-        action.performAction("title");
+        //action.performAction("title");
 
         // test
     }
@@ -85,7 +85,7 @@ public class TestCommand {
 
         // actual
         RemoveReleaseAction action = new RemoveReleaseAction(personal);
-        action.performAction("a release", "01/01/2001");
+        //action.performAction("a release", "01/01/2001");
 
         // test
     }

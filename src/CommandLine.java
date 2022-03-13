@@ -2,6 +2,7 @@
 import java.io.*;
 import Database.*;
 import LibraryCommands.HelpAction;
+import LibraryCommands.SearchByAction;
 
 public class CommandLine {
 
@@ -12,15 +13,18 @@ public class CommandLine {
         Library global = new Library();
         try{
             global.populateArtistData();
-            global.populateReleaseData();
             global.populateSongData();
+            global.populateReleaseData();
+
+            global.populateArtistsLists();
         }catch (IOException e){
-            System.out.println("Cannot load Library");
+            System.out.println("Failed to load Library");
         }
 
         while (true){
-            System.out.println("Please enter your request followed by any necessary parameters.\n" +
-                    "You can also enter \'Help\' to be shown a list of possible requests.\n" +
+            System.out.println("\nPlease enter your request followed by any necessary parameters.\n" +
+                    "RECOMMENDED: You can also enter \'Help\' to be shown a list of possible requests or \'SearchList\' " +
+                    "to be shown a list of possible ways to search the libraries.\n" +
                     "Enter \'Exit\' to end the application.");
 
             String input = "";
@@ -36,9 +40,11 @@ public class CommandLine {
             if(tokens2[0].equals("help")) {
                 HelpAction help = new HelpAction();
                 help.performAction();
-            }else if (tokens2[0].equals("exit")){
-                break;
-            }else if(tokens2[0].equals("edit")){
+            }else if (tokens2[0].equals("searchlist")){
+                SearchByAction s = new SearchByAction();
+                s.performAction();
+            }
+            else if(tokens2[0].equals("edit")){
                 currentState = new EditState();
                 currentState.execute(global, personal, tokens);
             }else if(tokens2[0].equals("browse")){
@@ -48,6 +54,7 @@ public class CommandLine {
                 currentState = new SearchState();
                 currentState.execute(global, personal, tokens);
             }else if (tokens2[0].equals("exit")){
+                System.out.println("Goodbye.");
                 break;
             }
             else{

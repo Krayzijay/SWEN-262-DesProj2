@@ -18,24 +18,30 @@ public class AddSongAction implements LibraryAction {
 
     @Override
     public void performAction(String itemName, String date, int rating) {
-        performAction(itemName, "", 0);
+        performAction(itemName);
     }
 
     /**
      * Overloading method to only include searching title
      * @param itemName
-     * @param date
      */
     public void performAction(String itemName) {
         for (Song song: global.getSongs()) {
-            boolean found = song.getTitle().equals(itemName);
+            boolean found = song.getTitle().toLowerCase().equals(itemName);
             if (found) {
                 personal.addSong(song);
+                System.out.println("The song \""+ song.getTitle() +"\" has been added to your Library.");
+                if(personal.getArtists().contains(song.getArtist())){
+                    return;
+                }
+                else{
+                    personal.addArtist(song.getArtist());
+                    System.out.println("The song's artist \""+ song.getArtist().getName() +"\" has been added to your Library as well.");
+                }
                 return;
             }
         }
-
-        throw new IllegalArgumentException(String.format("%s doesn't exist in the library.", itemName));
+        System.out.println("The song you specified doesn't exist. Please check your spelling.");
     }
-    
+
 }
