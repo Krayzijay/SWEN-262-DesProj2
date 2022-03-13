@@ -34,8 +34,10 @@ public class HelpAction implements LibraryAction {
 
                         "\n\n\'Search\' (What you are searching for(Artist, Song, Release), " +
                         "which library you want to search (personal vs global), how you want to search for it, and your search parameter.)" +
-                        "\nSearch Request Example: \"Search Personal Song ByTitle \"Mr. Blue Sky\"\" " +
-                        "\nIMPORTANT: Make sure the final parameter (Name/Title) has \"\" around it.\n\n");
+                        "\nSearch Request Example: \"Search Personal Song BySongTitle \"Mr. Blue Sky\"\" " +
+                        "\nIMPORTANT: Make sure the final parameter (Name/Title/Date) has \"\" around it." +
+                        "If you are searching \'ByDateRange\', please enter the two dates in the following format." +
+                        "\n FORMAT: \'YYYY-MM-DD YYYY-MM-DD\'. Please make sure the earlier date is first and is followed by an older date.\n\n");
     }
     
 }
