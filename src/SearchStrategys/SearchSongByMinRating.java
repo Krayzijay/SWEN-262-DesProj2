@@ -26,6 +26,7 @@ public class SearchSongByMinRating implements SearchStrategy {
             }
         }
         Collections.sort(result);
+        System.out.print("Search Result: ");
         System.out.println(result);
     }
     

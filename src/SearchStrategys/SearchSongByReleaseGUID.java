@@ -21,7 +21,7 @@ public class SearchSongByReleaseGUID implements SearchStrategy {
         List<Song> result = new ArrayList<>();
         List<Release> releases = lib.getReleases();
         for(Release release : releases) {
-            if(release.getGUID().equals(specification)) {
+            if(release.getGUID().equalsIgnoreCase(specification)) {
                 List<Song> songs = release.getTracks();
                 for(Song song : songs) {
                     result.add(song);
@@ -29,6 +29,7 @@ public class SearchSongByReleaseGUID implements SearchStrategy {
             }
         }
         Collections.sort(result);
+        System.out.print("Search Result: ");
         System.out.println(result);
     }
     
