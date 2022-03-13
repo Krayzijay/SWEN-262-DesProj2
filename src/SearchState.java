@@ -135,20 +135,17 @@ public class SearchState implements State{
                 System.out.println("The item type you entered was not a song, release or artist. Please check your spelling.");
             }
 
-
-
-
-
-            if (whichLibrary == 1){
-                g.executeStrategy(global, param);
-            }else if (whichLibrary == 2){
-                p.executeStrategy(personal, param);
-            }
-            else{
-                System.out.println("Something went wrong, please try again");
-            }
         }else{
             System.out.println("The library type you entered was not \'Global\' or \'Personal\'. Please check your spelling.");
+        }
+
+        if (whichLibrary == 1){
+            g.executeStrategy(global, param);
+        }else if (whichLibrary == 2){
+            p.executeStrategy(personal, param);
+        }
+        else{
+            System.out.println("Something went wrong, please try again");
         }
 
     }
