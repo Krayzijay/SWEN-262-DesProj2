@@ -21,7 +21,7 @@ public class CommandLine {
         }
 
         while (true){
-            System.out.println("Please enter your request followed by any necessary parameters.\n" +
+            System.out.println("\nPlease enter your request followed by any necessary parameters.\n" +
                     "You can also enter \'Help\' to be shown a list of possible requests.\n" +
                     "Enter \'Exit\' to end the application.");
 
