@@ -2,6 +2,7 @@
 import java.io.*;
 import Database.*;
 import LibraryCommands.HelpAction;
+import LibraryCommands.LibraryAction;
 import LibraryCommands.SearchByAction;
 
 public class CommandLine {
@@ -9,6 +10,7 @@ public class CommandLine {
     public static void main(String[] args){
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
         State currentState = null;
+        LibraryAction action = null;
         Library personal = new Library();
         Library global = new Library();
         try{
@@ -38,11 +40,11 @@ public class CommandLine {
             String[] tokens = input.split("\"");
             String[] tokens2 = tokens[0].split(" ");
             if(tokens2[0].equals("help")) {
-                HelpAction help = new HelpAction();
-                help.performAction();
+                action = new HelpAction();
+                action.performAction(tokens[0],tokens[0], 0);
             }else if (tokens2[0].equals("searchlist")){
-                SearchByAction s = new SearchByAction();
-                s.performAction();
+                action = new SearchByAction();
+                action.performAction(tokens[0],tokens[0], 0);
             }
             else if(tokens2[0].equals("edit")){
                 currentState = new EditState();

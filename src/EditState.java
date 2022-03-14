@@ -18,6 +18,7 @@ public class EditState implements State{
         String itemType = tokens2[2];
         String name = tokens[1];
         int rating = 0;
+        LibraryAction action = null;
 
         //if date was added
         if((tokens2.length == 4) && (command.toLowerCase().equals("add"))){
@@ -29,28 +30,28 @@ public class EditState implements State{
 
         if (command.toLowerCase().equals("add")){
             if(itemType.toLowerCase().equals("song")){
-                AddSongAction a = new AddSongAction(global, personal);
-                a.performAction(name, date, rating);
+                action = new AddSongAction(global, personal);
+                action.performAction(name, date, rating);
             }
             else if(itemType.toLowerCase().equals("release")){
-                AddReleaseAction a = new AddReleaseAction(global, personal);
-                a.performAction(name, date, rating);
+                action = new AddReleaseAction(global, personal);
+                action.performAction(name, date, rating);
             }
 
         }else if (command.toLowerCase().equals("remove")){
             if(itemType.toLowerCase().equals("song")){
-                RemoveSongAction a = new RemoveSongAction(personal);
-                a.performAction(name, date, rating);
+                action = new RemoveSongAction(personal);
+                action.performAction(name, date, rating);
             }
             else if(itemType.toLowerCase().equals("release")){
-                RemoveReleaseAction a = new RemoveReleaseAction(personal);
-                a.performAction(name, date, rating);
+                action = new RemoveReleaseAction(personal);
+                action.performAction(name, date, rating);
             }
 
         }else if (command.toLowerCase().equals("rate")){
             if(itemType.toLowerCase().equals("song")){
-                RateSongAction a = new RateSongAction(personal);
-                a.performAction(name, date, rating);
+                action = new RateSongAction(personal);
+                action.performAction(name, date, rating);
             }
         }else{
             System.out.println("Sorry that is not a feasible command, please try again");
