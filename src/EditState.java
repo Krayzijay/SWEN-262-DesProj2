@@ -29,7 +29,6 @@ public class EditState implements State{
 
         if (command.toLowerCase().equals("add")){
             if(itemType.toLowerCase().equals("song")){
-                System.out.println("its a song");
                 AddSongAction a = new AddSongAction(global, personal);
                 a.performAction(name, date, rating);
             }

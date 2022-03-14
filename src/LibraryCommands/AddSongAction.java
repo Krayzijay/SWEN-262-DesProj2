@@ -18,7 +18,9 @@ public class AddSongAction implements LibraryAction {
 
     @Override
     public void performAction(String itemName, String date, int rating) {
+
         performAction(itemName);
+
     }
 
     /**
