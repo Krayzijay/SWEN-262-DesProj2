@@ -4,5 +4,5 @@ The src folder contains 4 folders;
 - LibraryCommands: contains the classes that can edit the library class (adding/removing songs or releases, etc)
 - SearchStrategys: contains all the ConcreteStrategys that can search through the library class
 
-Both the batch file, start.bat, as well as the java file, MainRunnable, can be run from the 
+Both the batch file, start.bat, as well as the java file, CommandLine, can be run from the
 command line to start the program. The application is is designed not to be able to run in an IDE.

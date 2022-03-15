@@ -4,6 +4,12 @@ import LibraryCommands.*;
 
 import java.util.Calendar;
 
+/**
+ * The ConcreteState class which determines which edit library command was entered
+ *
+ * @author JP Dumont
+ */
+
 public class EditState implements State{
     @Override
     public void execute(Library global, Library personal, String[] tokens){

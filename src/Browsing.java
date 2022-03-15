@@ -6,7 +6,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * The that browses through the personal library
+ *
+ * @author JP Dumont
+ */
 public class Browsing{
 
     public static void browse(Library personal){
@@ -75,6 +79,10 @@ public class Browsing{
         }
 
     }
+    /**
+     * prints all the artists in the user's library
+     * @param list
+     */
     public static void printAllArtists(List<Artist> list ){
         for (Artist a : list ){
             System.out.print("Artist's Name: " + a.getName() + ", Disambiguation: " + a.getType() +
@@ -83,6 +91,12 @@ public class Browsing{
         }
     }
 
+    /**
+     * Prints all the songs in the specified release
+     * @param releases
+     * @param artist
+     * @param name
+     */
     public static void printRelease(List<Release> releases, Artist artist, String name){
 
         for(Release r : releases){
@@ -97,6 +111,11 @@ public class Browsing{
         System.out.println("Couldn't find that release. Please check your spelling.");
     }
 
+    /**Prints out all the songs and releases belonging to the specified artist
+     *
+     * @param chosenArtist
+     * @param personal
+     */
     public static void printArtistInfo(Artist chosenArtist, Library personal){
 
         //prints all single songs then all releases

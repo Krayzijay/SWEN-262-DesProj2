@@ -8,7 +8,7 @@ public class SearchByAction implements LibraryAction{
     }
 
     /**
-     * Overloading help command
+     * Overloading performAction command
      */
     public void performAction(){
         System.out.println("\nPossible Search Methods:" +

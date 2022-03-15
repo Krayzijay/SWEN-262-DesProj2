@@ -2,6 +2,12 @@
 import Database.*;
 import SearchStrategys.SearchStrategy;
 
+/**
+ * This class keeps track of  and call various searchStrategys
+ *
+ * @author JP Dumont
+ */
+
 import java.util.List;
 
 public class Searching {

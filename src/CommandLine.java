@@ -4,8 +4,12 @@ import Database.*;
 import LibraryCommands.HelpAction;
 import LibraryCommands.LibraryAction;
 import LibraryCommands.SearchByAction;
-
-public class MainRunnable {
+/**
+ * The main Runnable file that interacts with the user
+ *
+ * @author JP Dumont
+ */
+public class CommandLine {
 
     public static void main(String[] args){
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));

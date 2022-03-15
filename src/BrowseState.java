@@ -1,5 +1,12 @@
 
 import Database.Library;
+/**
+ * The ConcreteState class which determines if the user's personal library is empty or not
+ * before attmepting to browse through it.
+ *
+ * @author JP Dumont
+ */
+
 public class BrowseState implements State{
 
     @Override

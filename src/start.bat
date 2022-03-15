@@ -1,4 +1,4 @@
 
-javac MainRunnable.java
-java MainRunnable
+javac CommandLine.java
+java CommandLine
 pause

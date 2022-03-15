@@ -2,6 +2,11 @@
 import Database.Library;
 import SearchStrategys.*;
 
+/**
+ * The ConcreteState class which determines how to search through the specified library \
+ * @author JP Dumont
+ */
+
 public class SearchState implements State{
 
     @Override
