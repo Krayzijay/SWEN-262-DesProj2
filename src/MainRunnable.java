@@ -5,7 +5,7 @@ import LibraryCommands.HelpAction;
 import LibraryCommands.LibraryAction;
 import LibraryCommands.SearchByAction;
 
-public class CommandLine {
+public class MainRunnable {
 
     public static void main(String[] args){
         BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
